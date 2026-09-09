@@ -25,7 +25,11 @@ Language"](https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-
 and [ONS content guide](https://service-manual.ons.gov.uk/content/writing-for-users/plain-language)),
 current published research on AI-generated text detection covering
 perplexity and burstiness, and the field guides linked in
-[Further reading](#further-reading).
+[Further reading](#further-reading). The em dash allowance in
+[Typography](#typography) is the one rule set by precedent rather than by
+that research: it matches the editorial voice already established and
+published under this family's most content-heavy project, rather than the
+zero-tolerance stance a purely research-driven rule would otherwise set.
 
 ## Fundamental rule
 
@@ -93,11 +97,19 @@ not for writing that hits a uniform, safe average everywhere.
 
 ## Typography
 
-These are mechanical and apply everywhere, including headers, titles, and
-table cells, not only in flowing prose.
+Most of these are mechanical and apply everywhere, including headers,
+titles, and table cells, not only in flowing prose. The em dash rule is
+the one exception, scoped to body prose.
 
-- **No em dashes or en dashes**, anywhere. Use a comma, period, colon,
-  parentheses, or a plain hyphen instead.
+- **Em dashes, used sparingly, are fine in flowing prose.** An occasional
+  one is fine; a paragraph full of them is not, and a chain of em dashes
+  should never stand in for rewriting a run of short, choppy sentences.
+  Prefer a comma, period, colon, or parentheses as the default. Never use
+  an em dash in a title, heading, or product name (see
+  [naming.md](../style/naming.md#user-facing-text)).
+- **No en dashes.** They read as a typo of a hyphen to most readers and
+  earn their place far less often than an em dash does; use a plain
+  hyphen or rewrite instead.
 - **Straight quotes only.** No curly single or double quotes.
 - **No ellipsis character.** If a genuine ellipsis is needed, type three
   plain periods.
@@ -195,12 +207,14 @@ format is the clearest way to present a list of rules or a checklist, and
 it is exempt from the colon-subtitle and repeated-template bans above,
 which target narrative prose pretending to be a list, not an actual list.
 
-The typography rules (no em dashes, no contractions, no banned vocabulary,
-straight quotes) still apply in reference documents, including inside
-table cells and headers. So does plain, active-voice sentence
+The typography rules (no contractions, no banned vocabulary, straight
+quotes, no en dash) still apply in reference documents, including inside
+table cells and headers, and headers and table cells never take an em
+dash either, the same as a title. So does plain, active-voice sentence
 construction within any introductory paragraph. A one-line description
 next to a bullet term is not narrative prose and does not need to satisfy
-the cadence rules; a three-paragraph introduction to a spec document does.
+the cadence rules; a three-paragraph introduction to a spec document does,
+including the occasional-em-dash allowance above.
 
 ## Self-review checklist
 
@@ -209,8 +223,9 @@ one-paragraph PR description:
 
 1. Scan for every word in [Banned vocabulary](#banned-vocabulary); replace
    each with something specific to this sentence.
-2. Check for em dashes, en dashes, curly quotes, and the ellipsis
-   character, in the body, headers, and titles alike; replace with plain
+2. Check every header, title, and table cell for an em dash, and check the
+   body for more than an occasional one; check everywhere for en dashes,
+   curly quotes, and the ellipsis character. Replace with plain
    equivalents.
 3. Scan for English contractions and spell them out in full.
 4. Check for any "not X, but Y" or "it sounds like X, but Y" construction
