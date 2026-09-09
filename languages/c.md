@@ -1,8 +1,8 @@
 # C
 
-Layered on top of [cpp.md](cpp.md) — the same `.clang-format` baseline,
+Layered on top of [cpp.md](cpp.md): the same `.clang-format` baseline,
 naming conventions, and error-handling-by-layer principles apply. This
-file only covers what's specifically different for C.
+file only covers what is specifically different for C.
 
 ## No RAII
 
@@ -29,7 +29,7 @@ return result;
 ## No exceptions
 
 Every fallible function returns an error code or uses an out-parameter for
-the result, checked at every call site — there's no alternative error
+the result, checked at every call site: there is no alternative error
 channel. See
 [style/errors.md](../style/errors.md#error-strategy-by-layer-cc-embedded-and-similarly-latency-sensitive-code).
 

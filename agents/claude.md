@@ -8,8 +8,8 @@ library.
 
 Every agent-entry-point file (`AGENTS.md`, `CLAUDE.md`, Cursor rules,
 Copilot instructions) is a pointer, never a place to write or duplicate
-actual rules. Each project has exactly one "constitution" —
-`CONTRIBUTING.md` (or `docs/guidelines.md`) — that all of them point to.
+actual rules. Each project has exactly one "constitution," `CONTRIBUTING.md`
+(or `docs/guidelines.md`), that all of them point to.
 
 ```markdown
 # Agent instructions
@@ -38,8 +38,8 @@ Naming conventions: see guidelines/style/naming.md.
 Commit format: see guidelines/workflow/commits.md.
 ```
 
-Don't copy paragraphs from this library into a project's own files — link
-to them, so an update here doesn't require updating every consumer by hand.
+Do not copy paragraphs from this library into a project's own files: link
+to them, so an update here does not require updating every consumer by hand.
 
 ## No fabricated evidence
 
@@ -57,7 +57,7 @@ Allowed: real output driven by actual execution, capture scripts that only
 incomplete work, and documented limitations.
 
 When asked to solve a problem: fix the root cause, or state plainly that
-you can't yet and what's blocking you. "Looks correct in the screenshot"
+you cannot yet and what is blocking you. "Looks correct in the screenshot"
 without the underlying behavior being correct is a failed task, not a
 workaround.
 
@@ -75,7 +75,7 @@ of the change, not a fixed template:
 | T4 | Hardware, safety-critical, or irreversible-in-production change | All of the above, plus explicit sign-off request before merge |
 
 Separate the timeline (what you actually ran, in order) from the analysis
-(what you concluded from it) in any report — conflating the two is how
+(what you concluded from it) in any report: conflating the two is how
 optimistic interpretation quietly replaces evidence.
 
 ## Cloud/sandboxed agents
@@ -83,5 +83,5 @@ optimistic interpretation quietly replaces evidence.
 If an agent runs somewhere without access to project-specific hardware or
 services (e.g. no physical device, no production credentials), it must not
 claim that class of validation happened. State explicitly what was and
-wasn't verified, and document what a human needs to check manually before
+was not verified, and document what a human needs to check manually before
 merge.

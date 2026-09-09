@@ -1,12 +1,12 @@
 ---
 name: Bug report
-about: Something isn't working as specified
+about: Something is not working as specified
 labels: bug
 ---
 
 ## Summary
 
-One or two sentences: what's broken.
+One or two sentences: what is broken.
 
 ## Steps to reproduce
 
@@ -16,7 +16,7 @@ One or two sentences: what's broken.
 
 ## Expected behavior
 
-What should have happened — cite the spec/acceptance criterion this
+What should have happened: cite the spec/acceptance criterion this
 violates, if one exists.
 
 ## Actual behavior

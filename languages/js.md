@@ -1,7 +1,7 @@
 # JavaScript
 
-Two valid patterns are in active use, depending on project type — pick the
-one that matches what you're building, don't default to the app-style
+Two valid patterns are in active use, depending on project type: pick the
+one that matches what you are building, do not default to the app-style
 tooling for a static site.
 
 ## App-style projects (bundled, tested, monorepo-friendly)
@@ -19,11 +19,11 @@ tooling for a static site.
 
 ## Static-site / no-bundler projects
 
-- Vanilla JS (or a small library already loaded, like D3), no bundler —
+- Vanilla JS (or a small library already loaded, like D3), no bundler:
   `<script>` tags or inline scripts in templates is the established
   pattern, not a shortcut to replace later.
-- Don't introduce a Node/webpack build step for a static site without an
-  explicit spec and sign-off — it changes the deploy model for everyone
+- Do not introduce a Node/webpack build step for a static site without an
+  explicit spec and sign-off: it changes the deploy model for everyone
   touching the project afterward.
 - Client-side behavior must degrade gracefully if JS fails to load; the
   content must still be readable without it.

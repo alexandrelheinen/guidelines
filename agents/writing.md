@@ -62,7 +62,7 @@ From Orwell and the plain-language tradition, applied to technical writing:
   sooner than produce something clumsy. These are defaults, not a
   mechanical filter.
 
-## Cadence: connected prose, not staccato
+## Cadence and connected prose, not staccato
 
 The clearest tell of machine-generated prose is rhythm, not vocabulary.
 Short, punchy sentences stacked in a row, each landing with the same
@@ -167,7 +167,7 @@ published AI-text-detection research, useful as a self-check even without
 a detector:
 
 - **Low burstiness and low perplexity.** See
-  [Cadence](#cadence-connected-prose-not-staccato). Sentence length and
+  [Cadence](#cadence-and-connected-prose-not-staccato). Sentence length and
   structure that stay in a narrow band across a whole passage, and word
   choices that are always the single most predictable one, both read as
   machine-generated independent of subject matter.

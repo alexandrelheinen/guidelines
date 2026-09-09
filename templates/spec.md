@@ -1,4 +1,4 @@
-# Spec: `<feature name>`
+# Spec for `<feature name>`
 
 Status: draft | reviewed | implemented
 
@@ -21,11 +21,11 @@ What problem this solves and for whom. One paragraph.
 ## Acceptance criteria
 
 Numbered and testable, EARS-style where possible. Assign a traceability id
-per criterion — pick one scheme per project (`FR-<DOMAIN>-<NN>` or
+per criterion: pick one scheme per project (`FR-<DOMAIN>-<NN>` or
 `AC-<AREA>-<NN>`) and stay consistent:
 
-- `<ID>` — When `<trigger>`, the system shall `<behavior>`.
-- `<ID>` — When `<trigger>`, the system shall `<behavior>`.
+- `<ID>`: When `<trigger>`, the system shall `<behavior>`.
+- `<ID>`: When `<trigger>`, the system shall `<behavior>`.
 
 ## Traceability
 
@@ -43,11 +43,11 @@ compatibility requirements, security/privacy requirements.
 ## Design notes
 
 Enough of the "how" for a reviewer to catch an architectural disagreement
-before implementation starts. Not a full implementation plan — just the
+before implementation starts. Not a full implementation plan: just the
 decisions that would be expensive to reverse later.
 
 ## Open questions
 
-Anything still unresolved. Don't let these block starting work on the
-parts that are already clear — but don't implement the unresolved parts
+Anything still unresolved. Do not let these block starting work on the
+parts that are already clear: but do not implement the unresolved parts
 either.

@@ -18,8 +18,8 @@ git checkout -b <branch-name>
 [commits.md](commits.md): `feat/add-parser`, `fix/null-check-on-empty-input`,
 `ci/governance-job`, `docs/update-readme`.
 
-Cloud/agent-initiated branches carry an additional prefix so they're
-identifiable at a glance, e.g. `cursor/<feature>-<hash>` — adopt an
+Cloud/agent-initiated branches carry an additional prefix so they are
+identifiable at a glance, e.g. `cursor/<feature>-<hash>`: adopt an
 equivalent convention for whichever agent tooling a project uses.
 
 ## Keeping a branch current
@@ -32,4 +32,4 @@ linear (see [review.md § Merge policy](review.md#merge-policy)).
 
 `main` is protected and typically deploys automatically on push (via
 whatever CI/CD is configured for the project). No force-push to `main`,
-ever, by anyone — including agents.
+ever, by anyone: including agents.

@@ -2,8 +2,8 @@
 
 ## Version floor
 
-`cmake_minimum_required(VERSION 3.16)` — this is the floor across every
-current project; don't drop below it without a specific reason tied to a
+`cmake_minimum_required(VERSION 3.16)`: this is the floor across every
+current project; do not drop below it without a specific reason tied to a
 target platform's available CMake version.
 
 ## Modern, target-based style
@@ -18,8 +18,8 @@ target_compile_features(mypkg_core PUBLIC cxx_std_20)
 ```
 
 Avoid `include_directories()`, `link_libraries()`, and other directory-wide
-commands — they leak scope to every target in the directory, including
-ones that don't need the dependency.
+commands: they leak scope to every target in the directory, including
+ones that do not need the dependency.
 
 ## Optional dependencies fail gracefully
 
@@ -31,7 +31,7 @@ rather than a hard configure failure:
 find_package(Qt6 QUIET)
 option(BUILD_GUI "Build the GUI" ${Qt6_FOUND})
 if(BUILD_GUI AND NOT Qt6_FOUND)
-    message(WARNING "Qt6 not found — disabling BUILD_GUI")
+    message(WARNING "Qt6 not found: disabling BUILD_GUI")
     set(BUILD_GUI OFF)
 endif()
 ```
@@ -48,7 +48,7 @@ the owning package's `CMakeLists.txt`, not in a shared top-level script.
 
 ## Formatting
 
-CMake files don't currently have an enforced formatter across projects.
+CMake files do not currently have an enforced formatter across projects.
 If a project adopts one (e.g. `gersemi`, `cmake-format`), document the
 choice in that project's own guideline file rather than assuming a shared
 default.

@@ -1,7 +1,7 @@
 # Ruby
 
-Thin — Ruby usage so far is limited to one Jekyll static-site project, so
-this file documents what's actually in place rather than a full house
+Thin: Ruby usage so far is limited to one Jekyll static-site project, so
+this file documents what is actually in place rather than a full house
 style. Expand it as Ruby usage grows.
 
 ## Toolchain
@@ -19,7 +19,7 @@ project using Ruby. Until one is adopted:
 - Match the existing file's style exactly rather than introducing a new
   convention mid-file.
 - `snake_case` for methods, local variables, and file names; `PascalCase`
-  for classes and modules; `SCREAMING_SNAKE_CASE` for constants — the
+  for classes and modules; `SCREAMING_SNAKE_CASE` for constants: the
   Ruby-community default, consistent with [style/naming.md](../style/naming.md).
 
 ## Adopting Rubocop

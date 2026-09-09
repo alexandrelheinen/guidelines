@@ -2,9 +2,9 @@
 
 ## Validate at boundaries, trust internals
 
-Validate input where it enters the system — API request bodies, CLI
+Validate input where it enters the system: API request bodies, CLI
 arguments, config file parsing, deserialized messages. Once data has
-crossed that boundary and been validated, don't re-validate it defensively
+crossed that boundary and been validated, do not re-validate it defensively
 throughout the internal call chain; trust the type system and the
 boundary check.
 
@@ -22,18 +22,18 @@ turn configuration mistakes into hard-to-trace runtime behavior.
 
 ## Error strategy by layer (C/C++, embedded, and similarly latency-sensitive code)
 
-Different layers of the same system warrant different error-handling
-strategies — this is not an inconsistency, it's a deliberate tradeoff
-between safety and hot-path cost:
+Different layers of the same system warrant a deliberate tradeoff between
+safety and hot-path cost, expressed as different error-handling strategies
+at each layer:
 
 | Layer | Strategy |
 |---|---|
 | Startup / config loading | Result types or return codes, checked explicitly (`result.ok()`); log and exit non-zero on failure |
 | Main loop / orchestration | Return codes, bounded retry with backoff |
 | Driver / hot path | Return codes or sentinel values (e.g. a `Quality::kBad` enum); no exceptions, no heap allocation |
-| Signal handlers | `volatile sig_atomic_t` flag assignment only — nothing else is safe |
+| Signal handlers | `volatile sig_atomic_t` flag assignment only: nothing else is safe |
 
-RAII (or the language's equivalent — Python context managers, Rust `Drop`)
+RAII (or the language's equivalent: Python context managers, Rust `Drop`)
 handles resource cleanup; destructors/`__exit__`/`Drop::drop` must not
 themselves throw or raise.
 
@@ -60,12 +60,12 @@ an object in an invalid state.
 
 ## Logging
 
-- Never log secrets, tokens, or credentials — check this on every new log
+- Never log secrets, tokens, or credentials: check this on every new log
   statement, not just at review time.
 - Daemons/services log through the platform's logging facility (`syslog`,
   a structured logger), never raw `print`/`std::cout`, so log level and
   routing are controlled centrally.
-- A caught-and-swallowed error is a bug unless it's logged at a level that
+- A caught-and-swallowed error is a bug unless it is logged at a level that
   makes it discoverable.
 
 ## Stubs and not-yet-implemented code
@@ -73,12 +73,12 @@ an object in an invalid state.
 Mark an intentionally unimplemented function by raising `NotImplementedError`
 (Python) and pairing it with `@pytest.mark.xfail(strict=True,
 raises=NotImplementedError)` on its test, or `GTEST_SKIP()` with a
-descriptive reason (C++) — never a bare `pass`/empty body that silently
+descriptive reason (C++): never a bare `pass`/empty body that silently
 returns success. Remove the stub marker in the same commit that lands the
 real implementation.
 
 ## Avoid speculative error handling
 
-Don't add error handling, retries, or fallbacks for a failure mode that
-can't actually occur given the code's own guarantees. Handle the failure
-modes that exist; don't design for hypothetical ones.
+Do not add error handling, retries, or fallbacks for a failure mode that
+cannot actually occur given the code's own guarantees. Handle the failure
+modes that exist; do not design for hypothetical ones.

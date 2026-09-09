@@ -5,8 +5,8 @@
 - Target Python **3.12**, `requires-python = ">=3.12"` (or `>=3.12,<3.13`
   when pinning tightly).
 - `src/` layout: package code under `src/<package>/`, tests under `tests/`.
-- All tool configuration lives in `pyproject.toml` — don't add a parallel
-  `.flake8`/`setup.cfg`/`tox.ini` unless there's a specific tool that can't
+- All tool configuration lives in `pyproject.toml`: do not add a parallel
+  `.flake8`/`setup.cfg`/`tox.ini` unless there is a specific tool that cannot
   read `pyproject.toml` yet.
 
 ## Formatting and linting
@@ -32,7 +32,7 @@ python_version = "3.12"
 ```
 
 `line-length = 79` is an accepted per-project override for repos already
-shipping at that width — don't reformat an existing 79-column project to
+shipping at that width: do not reformat an existing 79-column project to
 88 just for consistency's sake.
 
 ## Docstrings
@@ -52,7 +52,7 @@ in CI. `# type: ignore` requires a one-line comment explaining why (see
 `pytest`, tests mirror the `src/` package structure. Coverage via
 `pytest-cov`, gate at 80-90% depending on project (see
 [workflow/tdd.md](../workflow/tdd.md#coverage)). Use `--strict-markers
---strict-config` so a typo'd or unregistered marker fails loudly instead of
+--strict-config` so a misspelled or unregistered marker fails loudly instead of
 being silently ignored.
 
 Tests that require an optional heavy dependency (a display backend, a GPU

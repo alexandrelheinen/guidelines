@@ -1,13 +1,13 @@
 # Rust
 
-Thin — current usage is one early-stage crate, so this file leans on
+Thin: current usage is one early-stage crate, so this file leans on
 standard Rust conventions to fill gaps rather than extracting a full house
 style from a single stub project.
 
 ## Edition and safety
 
 - `edition = "2021"` in `Cargo.toml`.
-- `#![deny(unsafe_op_in_unsafe_fn)]` at the crate root — any `unsafe`
+- `#![deny(unsafe_op_in_unsafe_fn)]` at the crate root: any `unsafe`
   block still has to justify its own invariants explicitly, this just
   closes the implicit-safety loophole for `unsafe fn` bodies.
 - Any `unsafe` block requires a `// SAFETY:` comment immediately above it
@@ -40,6 +40,6 @@ modules, `PascalCase` types/traits, `SCREAMING_SNAKE_CASE` constants.
 
 ## Reference
 
-[Rust API Guidelines](https://rust-lang.github.io/api-guidelines/) — follow
+[Rust API Guidelines](https://rust-lang.github.io/api-guidelines/): follow
 its naming and error-handling recommendations for anything not covered
 above, since local precedent here is still too thin to override them.
