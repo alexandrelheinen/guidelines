@@ -30,16 +30,40 @@ best practices for the language/framework.
 
 ## Referencing this library
 
-A consuming project's `CONTRIBUTING.md` cites specific files here instead
-of restating their content:
+Two mechanisms serve two different audiences.
+
+For Claude Code specifically, a project's `CLAUDE.md` can use Claude
+Code's import syntax to load a guideline file's content directly. A line
+containing only `@guidelines/style/naming.md` pulls that file into context
+the moment `CLAUDE.md` is read, instead of requiring a follow-up read
+later in the session:
+
+```markdown
+## Naming
+
+@guidelines/style/naming.md
+```
+
+Reserve imports for the files a session needs on every task, typically the
+method files (`workflow/sdd.md`, `workflow/integration.md`,
+`workflow/tdd.md`), the writing files, and naming. See this library's own
+[CLAUDE.md](../CLAUDE.md) for a worked example.
+
+For any other tool, or for a file consulted only for specific tasks, a
+plain link is enough:
 
 ```markdown
 Naming conventions: see guidelines/style/naming.md.
 Commit format: see guidelines/workflow/commits.md.
 ```
 
-Do not copy paragraphs from this library into a project's own files: link
-to them, so an update here does not require updating every consumer by hand.
+`AGENTS.md` should always use plain links rather than imports, since
+Cursor, Copilot, and other tools that read `AGENTS.md` do not resolve
+Claude Code's import syntax.
+
+Either way, do not copy paragraphs from this library into a project's own
+files. Link or import instead, so an update here does not require updating
+every consumer by hand.
 
 ## No fabricated evidence
 

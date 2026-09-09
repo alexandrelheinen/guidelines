@@ -2,51 +2,47 @@
 
 Entry point for Claude Code sessions working in this repository, and a
 model for what a consuming project's own `CLAUDE.md` should reference from
-this library once it is added as a submodule.
+this library once it is added as a submodule. The `@path` lines below are
+Claude Code imports: opening this file loads each one automatically, so
+treat them as part of this file rather than as optional links.
 
-Three guidelines matter most and come first. Read them before writing any
-code, prose, or spec:
+Three guidelines matter most and come first.
 
 ## 1. Method: how work gets done
 
-- [workflow/sdd.md](workflow/sdd.md), how a spec is written before
-  implementation starts.
-- [workflow/integration.md](workflow/integration.md), how the spec, the
-  V-cycle, and TDD combine into one loop per task.
-- [workflow/tdd.md](workflow/tdd.md), the red, green, refactor cycle and
-  coverage expectations.
+@workflow/sdd.md
+@workflow/integration.md
+@workflow/tdd.md
 
-Once work is ready to ship: [workflow/branching.md](workflow/branching.md),
+Once work is ready to ship, the same treatment applies to
+[workflow/branching.md](workflow/branching.md),
 [workflow/commits.md](workflow/commits.md), and
-[workflow/review.md](workflow/review.md) cover branch naming, commit
-format, and what a PR needs before a human merges it.
+[workflow/review.md](workflow/review.md), which cover branch naming,
+commit format, and what a PR needs before a human merges it.
 
 ## 2. Writing: how any prose should read
 
-- [agents/writing.md](agents/writing.md), the base rules for all prose:
-  vocabulary, typography, cadence, and the patterns that read as
-  AI-generated regardless of topic. Applies to commit bodies, PR
-  descriptions, and documentation, not only published content.
-- [agents/article.md](agents/article.md), structure rules specific to
-  long-form articles and posts, building on writing.md rather than
-  repeating it.
+@agents/writing.md
+@agents/article.md
 
 ## 3. Naming
 
-- [style/naming.md](style/naming.md), the cross-language naming rules:
-  physical-variable naming, casing by construct, file naming, test naming.
+@style/naming.md
 
 ## Templates
 
 Use these when opening an issue, starting a PR, or writing a spec, rather
-than improvising a structure each time:
+than improvising a structure each time.
 
-- [templates/issue/bug.md](templates/issue/bug.md)
-- [templates/issue/feature.md](templates/issue/feature.md)
-- [templates/pr.md](templates/pr.md)
-- [templates/spec.md](templates/spec.md)
+@templates/issue/bug.md
+@templates/issue/feature.md
+@templates/pr.md
+@templates/spec.md
 
 ## Also read
+
+These stay as plain links rather than imports, since a session consults
+them for the task at hand rather than needing them every time:
 
 - [style/comments.md](style/comments.md) and
   [style/errors.md](style/errors.md), the remaining cross-language style
@@ -62,4 +58,5 @@ than improvising a structure each time:
 
 For what this repository is and how a project consumes it as a submodule,
 read [README.md](README.md). [AGENTS.md](AGENTS.md) covers the same ground
-for non-Claude agent tooling (Cursor, Copilot).
+for non-Claude agent tooling (Cursor, Copilot), using plain links only,
+since those tools do not resolve Claude Code's import syntax.
