@@ -1,7 +1,10 @@
 # Guidelines
 
 Centralized development guidelines shared across my personal projects, consumed
-as a git submodule.
+as a git submodule. Licensed under [CC BY 4.0](LICENSE); see
+[CONTRIBUTING.md](CONTRIBUTING.md) for how this repository changes and how
+to pin a project to a specific version, and [CHANGELOG.md](CHANGELOG.md)
+for what changed in each release.
 
 ## What lives here
 
