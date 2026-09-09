@@ -27,6 +27,16 @@ git submodule add -b main https://github.com/alexandrelheinen/guidelines.git gui
 Then reference the relevant files from your project's `AGENTS.md` /
 `CLAUDE.md` instead of duplicating guidance locally.
 
+Pull in the latest guideline changes later with:
+
+```bash
+git submodule update --remote --merge
+```
+
+A project that wants stability over freshness can pin the submodule to a
+tagged release instead of tracking `main`. See
+[CONTRIBUTING.md](CONTRIBUTING.md#consuming-a-specific-version) for how.
+
 ## Structure
 
 Two bridge files sit at the repository root, one per agent-tool family:
