@@ -28,10 +28,35 @@ Then reference the relevant files from your project's `AGENTS.md` /
 
 ```
 guidelines/
-├── agents/       # AI agent writing & behavior guidelines
-├── workflow/     # SDD / TDD process guidelines
-├── languages/    # per-language coding guidelines
-└── templates/    # issue & PR templates
+├── AGENTS.md               # bridge — read this first if you're an agent
+├── agents/                 # AI agent writing & behavior guidelines
+│   ├── writing.md          #   editorial rules / anti-AI-slop
+│   ├── claude.md           #   thin-bridge pattern, no-fabricated-evidence rule
+│   └── context.md          #   what belongs here vs. in a consuming project
+├── style/                  # cross-language conventions
+│   ├── naming.md
+│   ├── comments.md
+│   └── errors.md
+├── workflow/                # SDD / TDD process guidelines
+│   ├── sdd.md
+│   ├── tdd.md
+│   ├── integration.md      #   how SDD + V-cycle + TDD combine
+│   ├── branching.md
+│   ├── commits.md
+│   └── review.md
+├── languages/               # per-language coding guidelines
+│   ├── py.md      ├── cpp.md     ├── c.md
+│   ├── cmake.md   ├── sh.md      ├── rb.md
+│   ├── rs.md      ├── js.md      ├── ts.md
+│   └── cs.md
+└── templates/                # issue & PR templates
+    ├── issue/
+    │   ├── bug.md
+    │   ├── feature.md
+    │   └── config.yml
+    ├── pr.md
+    └── spec.md
 ```
 
-(Directories are added as content is migrated in from individual projects.)
+File names are one word (or a language extension) by convention — see
+`style/naming.md` for how that convention itself is defined.
