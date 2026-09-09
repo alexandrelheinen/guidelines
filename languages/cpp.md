@@ -25,10 +25,12 @@ Run via a project script (`scripts/clang.sh` or equivalent) that applies
 vendored code). CI checks formatting with `git diff --exit-code` after
 running the formatter: any diff fails the check.
 
-This is the canonical house style. At least one existing repo uses a
-different set of parameters (2-space indent, 100 columns, pointer-left,
-unsorted includes): treat that as a known deviation to reconcile, not a
-second accepted style.
+This is the settled house style, based on the config already shared by
+`bossa` and `fret`. A project shipping a different set of parameters
+(2-space indent, 100 columns, pointer-left, unsorted includes) should
+migrate its `.clang-format` to the block above the next time that project
+touches its formatting setup. It is a deviation to fix, not a second
+accepted style.
 
 ## Naming
 
