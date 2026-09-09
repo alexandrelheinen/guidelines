@@ -1,25 +1,31 @@
 # Writing
 
-Cross-project writing rules for prose: articles, posts, PR descriptions,
-commit bodies, reports, README introductions, and this library's own text.
-They apply to human contributors and AI agents alike, and they apply to
-every project in this family, not one site's editorial voice.
+Cross-project rules for how any English prose should read: PR descriptions,
+commit bodies, reports, README introductions, documentation, and this
+library's own text. Every project in this family follows these rules for
+any prose it produces, whether written by a human or an agent.
+
+Long-form content specifically, articles, posts, and similar published
+pieces, has its own structural rules in [article.md](article.md), which
+builds on this file rather than repeating it. This file is the base layer:
+vocabulary, typography, cadence, and the patterns that make prose read as
+machine-generated regardless of what it is about.
 
 Reference and checklist material (tables, spec templates, bulleted rule
-lists like most of this library) follows the typography and vocabulary
-rules below but is exempt from the prose-structure rules aimed at
-narrative writing. See [Reference and checklist documents](#reference-and-checklist-documents).
+lists, most of this library) follows the typography and vocabulary rules
+below but is exempt from the prose-structure rules aimed at narrative
+writing. See [Reference and checklist documents](#reference-and-checklist-documents).
 
 ## Sources
 
 This guideline draws on George Orwell's ["Politics and the English
 Language"](https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/)
-(1946), plain-language writing standards used by government style guides
+(1946), plain-language writing standards used in government style guides
 (the UK's [Style Manual](https://www.stylemanual.gov.au/blog/basics-plain-language)
 and [ONS content guide](https://service-manual.ons.gov.uk/content/writing-for-users/plain-language)),
-and current research on AI-generated text detection covering burstiness,
-uncited-claim ratios, and filler-sentence density. Field guides on specific
-AI writing tells are linked in [Further reading](#further-reading).
+current published research on AI-generated text detection covering
+perplexity and burstiness, and the field guides linked in
+[Further reading](#further-reading).
 
 ## Fundamental rule
 
@@ -40,18 +46,18 @@ From Orwell and the plain-language tradition, applied to technical writing:
 - **Active voice.** "The script validates the input," not "the input is
   validated by the script." Active voice states who does what and removes
   ambiguity about responsibility.
-- **The short word over the long one, and the plain word over the
-  jargon term**, unless the technical term is the one the reader actually
-  needs (a protocol name, a function name).
+- **The short word over the long one, and the plain word over the jargon
+  term**, unless the technical term is the one the reader actually needs
+  (a protocol name, a function name).
 - **Cut every word that adds nothing.** If a sentence still says the same
   thing with a clause removed, remove the clause.
 - **Do not open a sentence with an empty construction** ("There is a
   script that...", "It is the case that..."). Name the subject and give it
   a verb directly: "A script validates..."
 - **One idea per sentence.** A sentence trying to hold two unrelated
-  claims usually needs to become two sentences or a single sentence with a
-  clear subordinate clause connecting them, not a semicolon papering over
-  the seam.
+  claims usually needs to become two sentences, or one sentence with a
+  subordinate clause that states how the claims connect, rather than a
+  semicolon papering over the seam.
 - Orwell's closing rule applies here too: break any rule on this page
   sooner than produce something clumsy. These are defaults, not a
   mechanical filter.
@@ -73,9 +79,17 @@ infer the relationship. Compare:
 
 Vary sentence length on purpose, but every sentence should still be a
 complete, connected thought. Five short sentences in a row is a drumbeat,
-not a voice; a passage where every sentence runs fifteen to twenty words
-with the same subject-verb-object shape reads as machine-generated for the
-same reason, monotony, not length.
+not a voice. Published research on AI-generated text describes this
+property as **burstiness**: human writing varies sentence length and
+structure noticeably from one sentence to the next (a long, clause-heavy
+sentence followed by a short one, then another extended one), while
+generated text tends toward uniform length and a repeated
+subject-verb-object shape. A companion measure, **perplexity**, captures
+how predictable each word choice is; consistently picking the single most
+likely next word reads as flat even when it is grammatically perfect. Aim
+for writing a competent reader would call surprising in its word choices
+and uneven in its rhythm, in the way an actual person's writing is uneven,
+not for writing that hits a uniform, safe average everywhere.
 
 ## Typography
 
@@ -148,20 +162,30 @@ Replace with something specific to the sentence at hand.
 
 ## Signals of AI-generated prose
 
-Beyond individual banned words, these are structural signals from current
-detection research, useful as a self-check even without a detector:
+Beyond individual banned words, these are structural signals drawn from
+published AI-text-detection research, useful as a self-check even without
+a detector:
 
-- **Low burstiness.** Human writing varies sentence length noticeably from
-  one sentence to the next; text where most sentences fall in a narrow
-  band (commonly fifteen to twenty words) reads as machine-generated even
-  when every sentence is individually fine.
+- **Low burstiness and low perplexity.** See
+  [Cadence](#cadence-connected-prose-not-staccato). Sentence length and
+  structure that stay in a narrow band across a whole passage, and word
+  choices that are always the single most predictable one, both read as
+  machine-generated independent of subject matter.
 - **Uncited authority claims.** A claim of the form "studies show" or
-  "experts agree" with no source attached. One or two are normal; a
-  passage where more than half of its claims float free of any source is a
-  strong tell.
+  "experts agree" with no source attached. One or two are normal in a long
+  piece; a passage where more than half of its claims float free of any
+  source is a strong tell.
 - **Removable filler.** If cutting a third of a paragraph's sentences
   loses no information, the paragraph was padded, not written. Reread and
   cut, rather than trim after the fact.
+
+Two caveats worth keeping in mind, since detection research itself flags
+them: formal or academic writing produced by an actual person can score
+low on burstiness too, so these are prompts for a human self-check, not a
+verdict to run through a detector and trust blindly. And a reader who
+works with these models daily gets noticeably better at spotting the
+patterns than any automated tool, which is exactly why this file exists
+instead of relying on a scanner.
 
 ## Reference and checklist documents
 
@@ -180,7 +204,7 @@ the cadence rules; a three-paragraph introduction to a spec document does.
 
 ## Self-review checklist
 
-Run this before finishing any draft, whether it is an article or a
+Run this before finishing any draft, whether it is a report or a
 one-paragraph PR description:
 
 1. Scan for every word in [Banned vocabulary](#banned-vocabulary); replace
@@ -205,6 +229,7 @@ one-paragraph PR description:
 ## Further reading
 
 - [Politics and the English Language, George Orwell (1946)](https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/)
+- [What is perplexity and burstiness for AI detection?, GPTZero](https://gptzero.me/news/perplexity-and-burstiness-what-is-it/)
 - [How to Tell if Writing is AI](https://huntingthemuse.net/library/how-to-tell-if-writing-is-ai)
 - [Cleaning Up AI Prose: An Editorial Rulebook for Agents](https://thinkwright.ai/editorial-standards)
 - [A Field Guide to Terrible AI Writing](https://medium.com/@tdoherty_96508/a-field-guide-to-terrible-ai-writing-6a83ddb6a141)
