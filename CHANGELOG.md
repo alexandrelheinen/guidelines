@@ -7,6 +7,8 @@ versioning follows the scheme in
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-09-09
+
 ### Added
 
 - `style/naming.md`, `style/comments.md`, `style/errors.md`: cross-language
@@ -31,3 +33,25 @@ versioning follows the scheme in
 - Root `AGENTS.md` and `CLAUDE.md` bridge files, the latter using Claude
   Code's `@import` syntax for the highest-priority guidelines.
 - `LICENSE` (CC BY 4.0), `CONTRIBUTING.md`, and this changelog.
+- `.github/workflows/writing-lint.yml`: CI enforcement of the writing
+  guideline on every push and pull request. Headings, titles, and table
+  cells fail the build if they contain an em dash; the whole repository
+  fails on an en dash, a curly quote, the ellipsis character, or an
+  English contraction.
+- `.gitattributes`: forces LF line endings for every text file,
+  regardless of a contributor's local Git configuration.
+- README: the submodule update command
+  (`git submodule update --remote --merge`) and a pointer to pinning a
+  specific version instead of tracking `main`.
+
+### Changed
+
+- `languages/cpp.md`: resolved the C++ style conflict between projects.
+  The `.clang-format` shared by `bossa` and `fret` is now the settled
+  house style; a project shipping different parameters should migrate to
+  it, not keep it as a second accepted style.
+- `agents/writing.md`: resolved the conflict with `website`'s established
+  editorial voice. An occasional em dash is now allowed in body prose;
+  headings, titles, and table cells still never take one, and en dashes,
+  curly quotes, the ellipsis character, and English contractions remain
+  banned everywhere.
