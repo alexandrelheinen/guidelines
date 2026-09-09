@@ -1,85 +1,210 @@
-# Writing for agents
+# Writing
 
-Editorial rules for AI assistants drafting or editing prose — articles,
-posts, READMEs, PR descriptions, reports. Applies beyond any one project's
-content; adapt the voice specifics (language, tone) per project, but keep
-the anti-AI-slop rules below as the baseline everywhere.
+Cross-project writing rules for prose: articles, posts, PR descriptions,
+commit bodies, reports, README introductions, and this library's own text.
+They apply to human contributors and AI agents alike, and they apply to
+every project in this family, not one site's editorial voice.
+
+Reference and checklist material (tables, spec templates, bulleted rule
+lists like most of this library) follows the typography and vocabulary
+rules below but is exempt from the prose-structure rules aimed at
+narrative writing. See [Reference and checklist documents](#reference-and-checklist-documents).
+
+## Sources
+
+This guideline draws on George Orwell's ["Politics and the English
+Language"](https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/)
+(1946), plain-language writing standards used by government style guides
+(the UK's [Style Manual](https://www.stylemanual.gov.au/blog/basics-plain-language)
+and [ONS content guide](https://service-manual.ons.gov.uk/content/writing-for-users/plain-language)),
+and current research on AI-generated text detection covering burstiness,
+uncited-claim ratios, and filler-sentence density. Field guides on specific
+AI writing tells are linked in [Further reading](#further-reading).
 
 ## Fundamental rule
 
-An assistant drafting content is a writing, revision, and gap-filling tool
-— not a co-author. Structure, emphasis, tone, and any choice that changes
-the meaning or weight of a text belong to the human owner of that content.
+An assistant drafting content is a writing, revision, and gap-filling tool,
+not a co-author. Structure, emphasis, tone, and any choice that changes the
+meaning or weight of a text belong to the human who owns that content.
 
-Correct what's grammatically wrong, fill gaps when asked, rephrase awkward
-sentences without changing what they say, and ask what's missing instead of
-inventing it. Completing a draft without asking what's missing is
-authoring, not editing — that's out of scope unless explicitly requested.
+Correct what is grammatically wrong, fill gaps when asked, rephrase awkward
+sentences without changing what they say, and ask what is missing instead
+of inventing it. Completing a draft without asking what is missing counts
+as authoring, which is out of scope unless the project explicitly asks for
+it.
+
+## Plain English fundamentals
+
+From Orwell and the plain-language tradition, applied to technical writing:
+
+- **Active voice.** "The script validates the input," not "the input is
+  validated by the script." Active voice states who does what and removes
+  ambiguity about responsibility.
+- **The short word over the long one, and the plain word over the
+  jargon term**, unless the technical term is the one the reader actually
+  needs (a protocol name, a function name).
+- **Cut every word that adds nothing.** If a sentence still says the same
+  thing with a clause removed, remove the clause.
+- **Do not open a sentence with an empty construction** ("There is a
+  script that...", "It is the case that..."). Name the subject and give it
+  a verb directly: "A script validates..."
+- **One idea per sentence.** A sentence trying to hold two unrelated
+  claims usually needs to become two sentences or a single sentence with a
+  clear subordinate clause connecting them, not a semicolon papering over
+  the seam.
+- Orwell's closing rule applies here too: break any rule on this page
+  sooner than produce something clumsy. These are defaults, not a
+  mechanical filter.
 
 ## Cadence: connected prose, not staccato
 
-The most common tell of model-generated prose is rhythm, not vocabulary.
-Short, punchy sentences stacked in a row — each landing with the same
-weight — read as machine cadence even when every fact is correct.
+The clearest tell of machine-generated prose is rhythm, not vocabulary.
+Short, punchy sentences stacked in a row, each landing with the same
+weight, read as machine cadence even when every fact is correct.
 
 Connected prose joins ideas through subordinate clauses and ordinary
-connectors (*because*, *while*, *which*, *when*, *so*, *though*) instead of
-a parade of throat-clearing transitions (*Furthermore*, *Moreover*, *In
-conclusion*). Vary sentence length; five short sentences in a row is a
-drumbeat, not a voice.
+connectors (*because*, *while*, *which*, *when*, *so*, *although*) instead
+of dropping bare fragments next to each other and leaving the reader to
+infer the relationship. Compare:
 
-Refuse these when they show up in a draft:
+- Fragmented: "New role. New codebase. One week in."
+- Connected: "One week into a new role and a new codebase, the parts that
+  slow me down are not the parts I expected."
 
-- **Mic-drop closers** — a three-to-six-word sentence used only as a
-  punchline after a fuller paragraph.
-- **Fragment lists dressed as prose** — "No X. No Y." or "Not X. Not Y. But
-  Z." belongs in notes, not running text.
-- **Setup-reversal pairs** split across full stops for fake insight ("We
-  thought X. We were wrong.").
-- **Faux-insider openers** ("Here's the thing," "What nobody tells you").
-- **Uniform sentence length** across a whole section.
+Vary sentence length on purpose, but every sentence should still be a
+complete, connected thought. Five short sentences in a row is a drumbeat,
+not a voice; a passage where every sentence runs fifteen to twenty words
+with the same subject-verb-object shape reads as machine-generated for the
+same reason, monotony, not length.
 
-Lead with the point. State what happened early; give concrete examples
-before abstract framing.
+## Typography
 
-## Vocabulary and structure to avoid
+These are mechanical and apply everywhere, including headers, titles, and
+table cells, not only in flowing prose.
 
-- **Negative parallelisms** ("it's not A, it's B," "not about X, it's about
-  Y"). State what's true and let the contrast appear in the argument.
-- **Em dashes** used systematically. An occasional one is fine; a
-  paragraph full of them isn't — and don't "fix" staccato by chaining
-  sentences with dashes instead of rewriting them.
-- **Colon-subtitle structures** ("Short phrase: elaboration") in
-  sentences, headlines, or bullets.
-- **AI vocabulary**: *delve*, *tapestry*, *underscore* (verb), *pivotal*,
-  *testament*, *vibrant*, *foster*, *showcase*, *highlight* (verb), *align
-  with*, *landscape* (abstract noun), *intricate*/*intricacies*, *crucial*,
-  *garner*, *bolstered*, *enduring*, *meticulous*, *leverage*, *unlock*,
-  *game-changer*, *robust* (as empty praise), *seamless*. If a word feels
-  polished and non-specific, it's probably wrong.
-- **Significance inflation** — don't assert something is important or part
-  of a broader trend unless that's the actual point, and it's supported
-  specifically.
-- **Hollow endings** — a "Conclusion" that only restates what was already
-  read. End on what's still open, what it costs, or what you'd do
-  differently.
+- **No em dashes or en dashes**, anywhere. Use a comma, period, colon,
+  parentheses, or a plain hyphen instead.
+- **Straight quotes only.** No curly single or double quotes.
+- **No ellipsis character.** If a genuine ellipsis is needed, type three
+  plain periods.
+- **No decorative symbols** in place of standard ones: no special bullets,
+  non-breaking spaces, or arrow glyphs where a plain hyphen or "->" reads
+  the same.
+- **Spell out contractions in English**: "it is" not "it's," "do not" not
+  "don't," "cannot" not "can't." This rule governs English contractions
+  specifically; it does not extend to other languages where an equivalent
+  short form is grammatically required rather than stylistic (French
+  elisions such as "l'article").
 
-## Self-review after drafting
+## Banned vocabulary
 
-After a first draft, read it once for model tells rather than facts or
-structure:
+Words below are not forbidden because they are wrong. They are forbidden
+because they have become filler: a reader's eye slides past them without
+learning anything a plainer word would not have said just as well.
+Replace with something specific to the sentence at hand.
 
-- Scan for banned vocabulary; replace with plain words.
-- Find negation pivots; rewrite as direct claims.
-- Reduce em dashes and colon-subtitle sentences.
-- Read for rhythm: if every sentence lands with the same weight, combine or
-  split until it varies.
-- Cut throat-clearing openers (*In this article*, *It's worth noting*,
-  *Let's dive in*) unless the human author wrote them deliberately.
-- Flag any closing fragment that exists only as applause.
+| Category | Words |
+|---|---|
+| Verbs | delve, leverage, utilize, foster, navigate, embark, unlock, unleash, unravel, harness, empower, facilitate, optimize, streamline, elevate, enhance, bolster, underscore (as a verb), showcase, spearhead, revolutionize, cultivate, champion, illuminate, demystify, embrace, resonate, transcend, propel, catalyze, galvanize, orchestrate, curate, supercharge, reimagine, redefine, amplify, unveil, garner |
+| Adjectives | crucial, pivotal, vital, essential, paramount, integral, robust (as empty praise), comprehensive, multifaceted, nuanced, intricate, seamless, dynamic, vibrant, transformative, groundbreaking, cutting-edge, state-of-the-art, unprecedented, invaluable, indispensable, profound, compelling, meticulous, holistic, bespoke, unparalleled, ever-evolving, fast-paced, game-changing, myriad, boundless, enduring |
+| Metaphors and nouns | tapestry, landscape (as an abstract noun), realm, journey, beacon, labyrinth, symphony, mosaic, cornerstone, testament, paradigm, synergy, ecosystem (outside its literal biological or software-dependency sense), framework (as filler), roadmap, treasure trove, game-changer, powerhouse, plethora, zeitgeist, bastion, odyssey, crossroads, frontier, horizon, catalyst, linchpin, bedrock, backbone (as in "backbone of X"), "deep dive" |
+| Hedges and transitions | furthermore, moreover, additionally, consequently, nevertheless, nonetheless, thus, hence, in essence, in conclusion, in summary, ultimately, "it is worth noting that," generally speaking, arguably, presumably, "while it is true that" |
+| Stock openers and closers | "In today's fast-paced world," "as technology continues to evolve," "whether you are an X or a Y," "let us dive in," "imagine if," "picture this," "in conclusion," "at the end of the day," "looking forward to sharing more" |
 
-## Match the owner's cadence
+## Banned structural patterns
 
-When editing an existing page, match its established voice rather than
-imposing a default style. Don't replace long, connected sentences with a
-stack of short declaratives just because they "feel clearer" to a model.
+- **Contrast reframe.** "It is not just X, it is Y," or "It sounds like a
+  small detail, but..." A manufactured tension used to sound insightful.
+  State the point directly.
+- **Negative parallelism.** "Not A, but B," or "It's not about X, it's
+  about Y." State what is true and let the contrast live in the argument.
+- **Forced triads.** Padding or trimming a list to exactly three items
+  because three sounds rhetorical. Use however many items are actually
+  true.
+- **Repeated sentence templates.** Explaining several points with the
+  identical shape each time is a listicle wearing prose clothing. Vary the
+  phrasing and length, and say which point matters most instead of
+  presenting them as equals.
+- **Disconnected fragments.** Bare, unconnected clauses dropped next to
+  each other for punch, forcing the reader to guess how they relate. Join
+  them with a connector that states the relationship.
+- **Both-sides hedging.** Presenting balanced pros and cons to avoid
+  committing to a view, when the context calls for an actual position.
+- **Fake specificity.** "Picture this," or "As a developer, you know..."
+  Generic appeals to shared experience. Use a real, concrete detail
+  instead: a name, a number, a place, an actual example.
+- **Colon-subtitle structures.** "Short phrase: elaboration" as a
+  sentence, headline, or bullet. The pattern is common in generated text
+  and rarely earns its place; state the point directly instead of staging
+  it.
+- **Mic-drop closers.** A three-to-six-word sentence used only as a
+  punchline after a fuller paragraph. Fold it into the preceding sentence
+  or cut it.
+- **Faux-insider openers.** "Here's the thing," or "What nobody tells
+  you." These perform secrecy instead of making a claim.
+- **Hollow endings.** A closing section that only restates what the
+  reader already read. End on what is still open, what it costs, or what
+  you would do differently.
+
+## Signals of AI-generated prose
+
+Beyond individual banned words, these are structural signals from current
+detection research, useful as a self-check even without a detector:
+
+- **Low burstiness.** Human writing varies sentence length noticeably from
+  one sentence to the next; text where most sentences fall in a narrow
+  band (commonly fifteen to twenty words) reads as machine-generated even
+  when every sentence is individually fine.
+- **Uncited authority claims.** A claim of the form "studies show" or
+  "experts agree" with no source attached. One or two are normal; a
+  passage where more than half of its claims float free of any source is a
+  strong tell.
+- **Removable filler.** If cutting a third of a paragraph's sentences
+  loses no information, the paragraph was padded, not written. Reread and
+  cut, rather than trim after the fact.
+
+## Reference and checklist documents
+
+Most files in this library are reference material: tables, bulleted rule
+lists with a bold lead-in term, spec and PR templates, checklists. That
+format is the clearest way to present a list of rules or a checklist, and
+it is exempt from the colon-subtitle and repeated-template bans above,
+which target narrative prose pretending to be a list, not an actual list.
+
+The typography rules (no em dashes, no contractions, no banned vocabulary,
+straight quotes) still apply in reference documents, including inside
+table cells and headers. So does plain, active-voice sentence
+construction within any introductory paragraph. A one-line description
+next to a bullet term is not narrative prose and does not need to satisfy
+the cadence rules; a three-paragraph introduction to a spec document does.
+
+## Self-review checklist
+
+Run this before finishing any draft, whether it is an article or a
+one-paragraph PR description:
+
+1. Scan for every word in [Banned vocabulary](#banned-vocabulary); replace
+   each with something specific to this sentence.
+2. Check for em dashes, en dashes, curly quotes, and the ellipsis
+   character, in the body, headers, and titles alike; replace with plain
+   equivalents.
+3. Scan for English contractions and spell them out in full.
+4. Check for any "not X, but Y" or "it sounds like X, but Y" construction
+   and rewrite it as a direct statement.
+5. Check for a list padded or trimmed to exactly three items for
+   rhetorical effect.
+6. Check for disconnected fragments dropped next to each other; connect
+   them with a conjunction that states why they belong together.
+7. If explaining several points in a row, confirm they do not all share
+   one sentence template.
+8. Read the draft once for rhythm: if every sentence lands with the same
+   weight, combine or split until it varies.
+9. Cut throat-clearing openers unless the human author wrote them on
+   purpose.
+
+## Further reading
+
+- [Politics and the English Language, George Orwell (1946)](https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/)
+- [How to Tell if Writing is AI](https://huntingthemuse.net/library/how-to-tell-if-writing-is-ai)
+- [Cleaning Up AI Prose: An Editorial Rulebook for Agents](https://thinkwright.ai/editorial-standards)
+- [A Field Guide to Terrible AI Writing](https://medium.com/@tdoherty_96508/a-field-guide-to-terrible-ai-writing-6a83ddb6a141)
