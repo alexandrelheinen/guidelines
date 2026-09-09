@@ -1,0 +1,60 @@
+name: Writing guideline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check headings for an em dash
+        run: |
+          set -uo pipefail
+          hits=$(grep -RPn '^#{1,6}' --include='*.md' --exclude-dir=.git . | grep -F '—' || true)
+          if [ -n "$hits" ]; then
+            echo "$hits"
+            echo "::error::Em dash found in a heading. Headings never take one, see agents/writing.md#typography."
+            exit 1
+          fi
+
+      - name: Check table rows for an em dash
+        run: |
+          set -uo pipefail
+          hits=$(grep -RPn '^\s*\|' --include='*.md' --exclude-dir=.git . | grep -F '—' || true)
+          if [ -n "$hits" ]; then
+            echo "$hits"
+            echo "::error::Em dash found in a table row. Table cells never take one, see agents/writing.md#typography."
+            exit 1
+          fi
+
+      - name: Check for en dashes, curly quotes, and the ellipsis character
+        run: |
+          set -uo pipefail
+          hits=$(grep -RFn -e '–' -e '‘' -e '’' -e '“' -e '”' -e '…' --include='*.md' --exclude-dir=.git . || true)
+          if [ -n "$hits" ]; then
+            echo "$hits"
+            echo "::error::En dash, curly quote, or ellipsis character found. Use a hyphen, straight quotes, or three periods, see agents/writing.md#typography."
+            exit 1
+          fi
+
+      - name: Check for English contractions
+        run: |
+          set -uo pipefail
+          pattern="\b(don|doesn|isn|aren|can|won|wasn|weren|hasn|haven|hadn|wouldn|couldn|shouldn|didn)'t\b"
+          pattern="$pattern|\b(it|that|here|there|what|who|let)'s\b"
+          pattern="$pattern|\b(I|we|you|they)'(m|ve|re|ll|d)\b"
+          hits=$(grep -RPn --include='*.md' --exclude='writing.md' --exclude-dir=.git "$pattern" . || true)
+          if [ -n "$hits" ]; then
+            echo "$hits"
+            echo "::error::English contraction found. Spell it out in full, see agents/writing.md#typography."
+            exit 1
+          fi
+
+      - name: Report em dash density (informational, not blocking)
+        run: |
+          echo "An occasional em dash in body prose is fine; a paragraph full of them is not."
+          grep -RFc '—' --include='*.md' --exclude-dir=.git . | grep -v ':0$' || echo "None found."
