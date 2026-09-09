@@ -1,0 +1,12 @@
+# Compiled/exported documents (generated from markdown sources)
+*.pdf
+*.docx
+*.html
+/build/
+/dist/
+/_site/
+/site/
+
+# OS/editor cruft
+.DS_Store
+Thumbs.db
