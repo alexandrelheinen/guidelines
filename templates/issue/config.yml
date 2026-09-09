@@ -1,0 +1,6 @@
+# Copy into a consuming repo's .github/ISSUE_TEMPLATE/config.yml.
+# Keep blank_issues_enabled: false once bug.md and feature.md cover your
+# common cases — it forces reporters through a template instead of a blank
+# issue.
+blank_issues_enabled: false
+contact_links: []
