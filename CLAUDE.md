@@ -55,6 +55,11 @@ them for the task at hand rather than needing them every time:
   no-fabricated-evidence rule and evidence-reporting tiers.
 - [agents/context.md](agents/context.md), what belongs in this shared
   library versus in a single project's own `CONTRIBUTING.md`.
+- [integrations/toolkits.md](integrations/toolkits.md), read this whenever
+  an installed skill or plugin tells you to do something these guidelines
+  forbid, or forbids something they require. It records which of the two
+  wins for every known conflict, so the answer is looked up rather than
+  guessed.
 
 For what this repository is and how a project consumes it as a submodule,
 read [README.md](README.md). [AGENTS.md](AGENTS.md) covers the same ground

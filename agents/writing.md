@@ -66,6 +66,32 @@ From Orwell and the plain-language tradition, applied to technical writing:
   sooner than produce something clumsy. These are defaults, not a
   mechanical filter.
 
+## Documentation is timeless
+
+A README, and anything under `docs/`, describes what the thing is and how
+it works, in the present tense, for a reader who has no idea when it was
+written. It does not narrate what happened to the project. No dated status
+section, no "recently", no "we have now migrated", no account of what the
+code used to be before somebody changed it.
+
+That history is a project-management asset and it already has three homes
+that are better at holding it: git, the changelog, and the issue tracker.
+Copying it into documentation means every document quietly expires, and a
+reader cannot tell which sentences are still true.
+
+| Instead of | Write |
+|---|---|
+| The repository was reset in September 2026, replacing a .NET study lab | Nothing, or, if the reader genuinely needs to know the project is early, "no application code has landed yet" |
+| We recently migrated from X to Y | The system uses Y |
+| This module is currently being refactored | Nothing. An issue tracks the refactor |
+| As of this writing, the API returns three fields | The API returns three fields |
+
+Two kinds of date survive. A claim about something outside the project
+carries one, because the date is what tells a reader when to recheck it:
+"`group_imports` remains nightly-only as of September 2026" is useful
+precisely because it will expire and says so. And a changelog is a history
+by definition, which is why the history belongs there.
+
 ## Cadence and connected prose, not staccato
 
 The clearest tell of machine-generated prose is rhythm, not vocabulary.
@@ -199,6 +225,23 @@ works with these models daily gets noticeably better at spotting the
 patterns than any automated tool, which is exactly why this file exists
 instead of relying on a scanner.
 
+## Compression tools
+
+A tool that compresses agent output into telegraphic fragments, caveman
+being the one this family has looked at, contradicts nearly every rule
+above at once: connected prose, cadence, plain sentence construction.
+
+Use one only where the output is thrown away, meaning exploration,
+scratch reasoning, a conversation nobody will read twice. Switch it off for
+anything that gets committed: documentation, specs, commit messages, pull
+request descriptions, code comments. If the tool cannot be scoped that way,
+it does not belong in a repository whose prose this file governs.
+
+Check whether it is genuinely off rather than assuming. A plugin that
+registers a `SessionStart` hook is active from installation, and its
+default mode may well be its most aggressive one. See
+[integrations/toolkits.md](../integrations/toolkits.md).
+
 ## Reference and checklist documents
 
 Most files in this library are reference material: tables, bulleted rule
@@ -240,6 +283,9 @@ one-paragraph PR description:
    weight, combine or split until it varies.
 9. Cut throat-clearing openers unless the human author wrote them on
    purpose.
+10. For a README or a document under `docs/`, scan for dates, "recently",
+    "currently", and any sentence describing what the project used to be.
+    Cut them: that belongs in git and the changelog.
 
 ## Further reading
 

@@ -14,10 +14,20 @@ demand instead.
 | The project's own spec documents (`docs/specification.md`, feature specs) | The SDD/TDD process itself |
 | Domain-specific rules (e.g. an editorial voice for one specific site) | The general anti-AI-slop writing rules that voice builds on |
 | One-off gotchas discovered while working in this codebase | Conventions stable enough to apply across projects |
+| Which third-party toolkits the project installs, and their pins | Which of this library's rules those toolkits override, in [integrations/toolkits.md](../integrations/toolkits.md) |
 
 If a rule would be identical if copied into every project's
 `CONTRIBUTING.md`, it belongs here instead: write it once, link to it
 everywhere (see [claude.md](claude.md#referencing-this-library)).
+
+## Project history is not documentation
+
+What happened to a project, meaning migrations, resets, abandoned
+approaches, and dated status notes, is a project-management asset. It lives
+in git, the changelog, and the issue tracker. Keeping it out of the README
+and out of `docs/` is not tidiness, it is what stops documentation from
+expiring: see
+[writing.md](writing.md#documentation-is-timeless).
 
 ## Signs a file has grown too large
 

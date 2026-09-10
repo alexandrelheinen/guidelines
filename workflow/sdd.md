@@ -49,17 +49,36 @@ greppable in both directions.
 
 ## Where specs live
 
-`docs/specification.md` for the project-level functional spec,
-`docs/architecture.md` for structural decisions, and
-`docs/<feature>.md` (or `docs/features/<feature>.md`) per feature. A
-`docs/decisions.md` (ADR-style log) records why a constraint or gate was
-loosened or changed, so "why is this weaker than the spec says" is always
-answerable from git history.
+A project running the cc-sdd toolkit keeps its specs where cc-sdd reads
+them, `.kiro/specs/<feature>/`, holding `requirements.md`, `design.md`, and
+`tasks.md` per feature. The toolkit owns that lifecycle, so fighting it
+buys nothing.
+
+Every other project uses `docs/`: `docs/specification.md` for the
+project-level functional spec, `docs/architecture.md` for structural
+decisions, and `docs/<feature>.md` per feature.
+
+Either way `docs/decisions.md` holds the ADR-style log recording why a
+constraint or gate was loosened or changed, so "why is this weaker than the
+spec says" is always answerable. That file stays in `docs/` in both layouts,
+because it outlives any one spec.
+
+The required elements above do not change with the location. A cc-sdd
+`requirements.md` still has to carry intent, scope, testable acceptance
+criteria, traceability ids, and constraints, whatever the template
+generated.
 
 ## Gating rule
 
 Do not start implementation work at a given V-cycle level (see
 [integration.md](integration.md)) until the spec artifacts for that level
 exist. The point is keeping an agent, or a human under deadline pressure,
-from inventing requirements
-mid-implementation.
+from inventing requirements mid-implementation.
+
+This survives contact with a toolkit that offers to skip the spec. cc-sdd's
+discovery step can route a request straight to implementation, and that
+routing is a suggestion, not permission: the rigor levels above still set
+the floor, and the smallest of them is a few written bullet points before
+code. A human may waive it for a given change. A skill may not waive it on
+the human's behalf. See
+[integrations/toolkits.md](../integrations/toolkits.md#arbitration).

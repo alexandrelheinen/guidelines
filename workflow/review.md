@@ -11,11 +11,37 @@ the others miss:
 | 2, automation | CI/CD quality gates (build, tests, coverage, lint) | Blocks broken builds and regressions mechanically, not by trusting review to catch everything |
 | 3, review | Manual merge, human judgment | Validates intent and architecture fit that automation cannot check |
 
+## Running a review
+
+Review a diff along two independent axes, because they fail differently:
+
+- **Standards**: does the code follow what this project documents, meaning
+  the language file in this library plus whatever the project adds on top?
+- **Spec**: does the code do what the originating spec asked for, including
+  the acceptance criteria it did not implement?
+
+Running the two separately keeps a reviewer from talking itself out of a
+missing requirement because the code it is reading is tidy. The
+`code-review` skill in the mattpocock skillset does exactly this, in
+parallel subagents, and it is the preferred mechanism where it is
+installed: it reads the project's documented standards rather than
+asserting its own, which is the kind of skill worth reaching for. See
+[integrations/toolkits.md](../integrations/toolkits.md#the-governing-principle).
+
+The mechanism is free to change. What does not change is that both axes get
+covered and that the reviewer is not the same context that wrote the code.
+
 ## Human-only merge
 
 Agents open and update pull requests; they do not merge them, ever,
 regardless of how confident the automated checks look. A human approves
-and merges. This is a hard rule, not a suggestion for cautious cases.
+and merges. This is a hard rule, and it holds no matter how many review
+subagents signed off first: an automated reviewer is a mechanism inside
+layer 2, not a substitute for layer 3.
+
+The one exception is a maintainer who asks for a merge directly in the
+active task, which is the maintainer exercising layer 3 rather than an
+agent bypassing it.
 
 An agent's job ends at "PR is open, CI is green, here is the evidence." It
 does not end at "merged."

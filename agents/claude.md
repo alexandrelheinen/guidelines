@@ -25,8 +25,17 @@ them gets edited in isolation. One file, several pointers, keeps every
 agent and every human reading the same source.
 
 Conflict resolution order when instructions disagree: direct maintainer
-request > the project's `CONTRIBUTING.md` > this shared library > general
-best practices for the language/framework.
+request > the project's `CONTRIBUTING.md` > this shared library >
+third-party skills and plugins the project installs > general best
+practices for the language or framework.
+
+Installed skillsets sit below this library on purpose. A skillset is
+somebody else's opinion about how to work, often a good one, and it is
+welcome as a mechanism; it does not get to redefine the house voice,
+naming, or process by being installed. Where a package and this library
+genuinely conflict, the decision is recorded once in
+[integrations/toolkits.md](../integrations/toolkits.md#arbitration) rather
+than settled again in every project.
 
 ## Referencing this library
 
@@ -64,6 +73,30 @@ Claude Code's import syntax.
 Either way, do not copy paragraphs from this library into a project's own
 files. Link or import instead, so an update here does not require updating
 every consumer by hand.
+
+## Pointer wording
+
+A line in `AGENTS.md` naming a document, and a skill's `description` field,
+are the same object: a pointer held in context that names material sitting
+outside it, plus the condition for going to fetch it. How that pointer is
+worded, and not what it points at, decides whether the agent actually
+reaches the material.
+
+So a rule that matters and is being missed is usually a wording problem
+before it is a placement problem. Sharpen the condition first, naming the
+situation that should trigger the read in the words the task will actually
+use, and only inline the material if sharpening fails. Inlining is the
+expensive fix: it costs context on every session, including the ones where
+the rule does not apply.
+
+## Declaring the project's toolkit
+
+A project that installs third-party skills or plugins says so in one place,
+with the exact pin each tool recorded, and points at
+[integrations/toolkits.md](../integrations/toolkits.md) for the arbitration
+rather than restating it. Read the pin from what the installer wrote, not
+from the tag you meant to install, and check whether the package registers
+session hooks before describing it as inactive.
 
 ## No fabricated evidence
 

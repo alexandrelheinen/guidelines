@@ -15,6 +15,8 @@ for what changed in each release.
 - **Language coding guidelines**: style and convention guides for Python,
   C++, C, Node.js, Rust, Ruby, and others as needed.
 - **Issue and PR templates**: aligned with the SDD + TDD workflow.
+- **Toolkit arbitration**: which third-party agent packages the family
+  installs, and which of these guidelines each one overrides.
 
 ## Usage
 
@@ -72,6 +74,12 @@ The `templates/` folder holds the issue and pull-request templates that
 follow the SDD and TDD workflow above: bug and feature issue templates
 under `templates/issue/`, a pull-request template, and a standalone spec
 template for starting new work.
+
+The `integrations/` folder holds `toolkits.md`, the record of which
+third-party agent packages the family installs, how each is pinned, and
+which of this library's rules a package overrides. A project installing a
+skillset or a plugin points there instead of settling the same conflict
+privately.
 
 File names across the repository are one word, or a language extension, by
 convention. See `style/naming.md` for how that convention itself is

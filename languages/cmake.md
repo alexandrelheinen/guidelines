@@ -48,7 +48,7 @@ the owning package's `CMakeLists.txt`, not in a shared top-level script.
 
 ## Formatting
 
-CMake files do not currently have an enforced formatter across projects.
+CMake files have no enforced formatter across projects.
 If a project adopts one (e.g. `gersemi`, `cmake-format`), document the
 choice in that project's own guideline file rather than assuming a shared
 default.

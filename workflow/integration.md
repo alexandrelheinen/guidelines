@@ -35,6 +35,24 @@ the code already does.
 - **Large or agent-assisted feature**: the spec becomes detailed enough to
   serve as the review artifact in step 5 alongside the diff itself.
 
+## When a toolkit drives the cycle
+
+cc-sdd runs the same V under different names, and a project using it should
+recognize the mapping rather than run two processes side by side:
+
+| V-cycle step | cc-sdd phase |
+|---|---|
+| 1, document | `kiro-discovery`, then `kiro-spec-requirements` |
+| 2, architecture | `kiro-spec-design`, then `kiro-spec-tasks` |
+| 3, implement | `kiro-impl`, one task per iteration |
+| 4, verify | The project's validation script, unchanged |
+| 5, review | The reviewer pass, plus a human reading the diff |
+| 6, merge | Human only, unchanged |
+
+Steps 4 and 6 are the ones a toolkit does not get to redefine. A phase
+gate inside a skill is an agent agreeing with itself; the validation script
+and the human merge are what make it real.
+
 ## Why this order, specifically
 
 Writing the test/validation plan (step 2) before the implementation (step

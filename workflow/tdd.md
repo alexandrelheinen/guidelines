@@ -18,6 +18,23 @@ For regressions specifically: write the failing test that reproduces the
 bug first, then fix it. This is non-negotiable: a bug fix without a
 regression test can silently come back.
 
+## Seams
+
+Test at a **seam**, meaning the public boundary where behavior is
+observable without reaching inside. Tests that reach past the seam into
+internals break on every refactor and prove nothing about the contract.
+
+Agree the seams before writing the tests. Naming which boundaries are under
+test, and confirming them, is what puts the testing effort on the critical
+paths instead of spreading it evenly over every edge case. A test written
+at a boundary nobody agreed to is usually a test of an implementation
+detail wearing a better name.
+
+This vocabulary comes from the `tdd` and `codebase-design` skills in the
+mattpocock skillset, which the family adopted because it adds a step this
+file was missing rather than contradicting the loop above. See
+[integrations/toolkits.md](../integrations/toolkits.md).
+
 ## Coverage
 
 Projects in this family target somewhere in the **80-90% line/branch
@@ -30,6 +47,18 @@ the gate.
 Do not lower a coverage gate to make CI pass. If a gate is genuinely wrong
 for a specific case, that is a decision worth a line in `docs/decisions.md`,
 not a silent threshold edit.
+
+## Running the loop per task
+
+A toolkit may drive the loop for you. cc-sdd's implementation phase runs
+one task per iteration with a fresh implementer, an independent reviewer,
+and a debugging pass when the reviewer rejects twice, which is the same
+red-green-refactor cycle with the roles separated so that the author of a
+test is not also its judge.
+
+Two rules hold whoever is driving. The failing test comes first and fails
+for the right reason, and a task is not done because an agent said so, but
+because the gate in [integration.md](integration.md) is green.
 
 ## Marking intentionally unimplemented work
 

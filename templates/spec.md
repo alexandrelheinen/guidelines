@@ -6,6 +6,11 @@ See [workflow/sdd.md](../workflow/sdd.md) for how this fits into the
 overall process, and [workflow/integration.md](../workflow/integration.md)
 for how it feeds the V-cycle.
 
+This template is for a project writing its specs by hand under `docs/`. A
+project running cc-sdd generates `requirements.md`, `design.md`, and
+`tasks.md` from its own templates instead, and the sections below become a
+checklist for what those files still have to contain.
+
 ## Intent
 
 What problem this solves and for whom. One paragraph.
