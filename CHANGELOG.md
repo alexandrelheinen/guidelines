@@ -7,6 +7,26 @@ versioning follows the scheme in
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-09-10
+
+### Changed
+
+- `languages/rs.md`: replaced the placeholder file with a full Rust
+  guideline. It sets edition 2024 and a pinned toolchain, a stable-only
+  `rustfmt.toml` at 100 columns, lint tiers configured through the
+  `[workspace.lints]` table (a baseline for every crate and a hardened
+  restriction set for real-time, `unsafe`, and FFI crates), an unsafe-code
+  policy built on `SAFETY` comments and Miri, panic and arithmetic rules,
+  `thiserror` error enums over `Box<dyn Error>`, rustdoc conventions,
+  dependency and supply-chain gates, FFI rules, and the required tool
+  list with the commands a project's validate script runs. The rules
+  derive from the Safety-Critical Rust Coding Guidelines and the Linux
+  kernel Rust coding guidelines, both cited inline where a rule maps to
+  one of theirs.
+- `workflow/tdd.md`: added the Rust form of marking intentionally
+  unimplemented work (`todo!()` plus a `#[should_panic]` test), alongside
+  the existing Python and C++ entries.
+
 ## [1.0.0] - 2026-09-09
 
 ### Added

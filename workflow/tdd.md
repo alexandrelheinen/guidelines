@@ -41,6 +41,9 @@ suite fails loudly until the real implementation lands:
   means the marker itself fails once the stub starts passing, forcing you
   to remove the marker rather than forget it.
 - C++: `GTEST_SKIP()` with a descriptive reason string.
+- Rust: `todo!()` in the stub, and mark its test
+  `#[should_panic(expected = "not yet implemented")]`, which fails once
+  the stub stops panicking and forces the marker out.
 
 Remove the marker in the same commit that lands the real implementation.
 Do not let a codebase accumulate permanently skipped tests.
