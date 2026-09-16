@@ -9,6 +9,20 @@ versioning follows the scheme in
 
 ### Added
 
+- `domains/robotics.md`, and the `domains/` folder it opens, for practice
+  tied to a problem domain rather than to a language. It covers which
+  safety standards actually apply to a mobile robot as against a
+  manipulator, the ISO 21448 separation of functional insufficiency from
+  malfunction, stop categories and what software may and may not do in
+  each, the windowed input-validity state machine from the AUTOSAR E2E
+  specification, frame and timing conventions, interface shape, the
+  invariants worth asserting in planners, controllers, maps and
+  kinematics, verification practice led by metamorphic testing, and the
+  boundary between what a library owns and what only the integrating
+  system can own.
+
+### Added
+
 - `style/defensive.md`: cross-language rules for code whose failure costs
   more than a rerun. Where a contract check belongs, and the resolution of
   the conflict between Meyer's non-redundancy rule and validating at a

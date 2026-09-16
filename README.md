@@ -73,6 +73,13 @@ extension rather than its full name (`py.md`, `cpp.md`, `rs.md`, and so
 on), so a project can point directly at the file matching the code it is
 editing.
 
+The `domains/` folder holds practice specific to a problem domain rather
+than to a language: `robotics.md` for software that moves a machine,
+covering which safety standards apply, the element-out-of-context framing
+for a reusable library, input validation, the invariants worth asserting
+in a planner or a controller, and the boundary between what a library owns
+and what the integrating system owns.
+
 The `templates/` folder holds the issue and pull-request templates that
 follow the SDD and TDD workflow above: bug and feature issue templates
 under `templates/issue/`, a pull-request template, and a standalone spec
