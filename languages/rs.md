@@ -37,6 +37,21 @@ components = ["rustfmt", "clippy", "llvm-tools-preview"]
 - One workspace per repository, crates under `crates/<name>/`, shared
   metadata and lints in `[workspace.package]` and `[workspace.lints]`.
 
+## Project layout
+
+- A single-crate project keeps the standard `src/lib.rs` or `src/main.rs`
+  layout, and grows into the workspace above once a second crate appears.
+- Split crates along the dependency layering the project wants enforced.
+  Cargo rejects a cycle between crates, so the split is what stops an
+  accidental upward dependency from compiling, and that is a reason to
+  split rather than a cost of splitting.
+- A library crate stays usable without pulling a binary's dependencies:
+  put binaries in `src/bin/` or in their own crate, never behind a default
+  feature that drags a command-line parser into every consumer.
+- Integration tests live in `tests/`, benchmarks in `benches/`, examples
+  in `examples/`. Those are Cargo's own directories, and moving them buys
+  nothing.
+
 ## Formatting
 
 `rustfmt` with a small `rustfmt.toml` at the workspace root:
@@ -259,6 +274,10 @@ Rust specifics:
   `#[non_exhaustive]`, and returns it from every fallible public function.
   `Box<dyn Error>` in a public library signature is not acceptable: it
   erases exactly the information a caller needs to branch on.
+- In a workspace, each crate defines its own error enum and every one of
+  them converts into a single root error the top-level crate exposes. A
+  caller then matches on one type without the leaf crates depending on
+  each other.
 - A binary may use `anyhow` or `eyre`, and only at the top layer where the
   error is about to be reported to a human. It does not leak into the
   library crates below it.
@@ -290,8 +309,8 @@ public API, so the rest is a review expectation.
 
 - The first paragraph is one sentence describing the item, ending with a
   period. Detail goes in the paragraphs after it.
-- Sections, in this order when they apply: `# Safety`, `# Errors`,
-  `# Panics`, `# Examples`.
+- Sections, in this order when they apply: `# Arguments`, `# Returns`,
+  `# Safety`, `# Errors`, `# Panics`, `# Examples`.
 - Examples are doc tests and they run in CI, so they stay compiling.
 - Link items with brackets (`[Config::validate]`) rather than naming them
   in plain text, so the reference survives a rename check.
@@ -299,6 +318,44 @@ public API, so the rest is a review expectation.
   period, which keeps a comment cheap to promote into documentation later.
 - `cargo doc` runs with `RUSTDOCFLAGS="-D warnings"`: a broken intra-doc
   link fails the build.
+
+Those headings are how the Google-style docstring sections that
+[style/comments.md](../style/comments.md) requires elsewhere are spelled
+in rustdoc:
+
+| Google-style section | Rustdoc heading |
+|---|---|
+| summary line | first line of the `///` block |
+| `Args` | `# Arguments` |
+| `Returns` | `# Returns` |
+| `Raises` | `# Errors`, for anything returned as `Err` |
+| `Raises`, for a caller bug | `# Panics` |
+| usage example | `# Examples`, written as a doctest |
+
+A one-line comment is enough for an item whose signature already says
+everything. Anything taking a physical quantity states its unit in the
+comment, since the `who_what` rule in
+[style/naming.md](../style/naming.md#the-who_what-rule-for-physical-and-measured-variables)
+keeps the unit out of the identifier:
+
+```rust
+/// Advances the vehicle state by one control step.
+///
+/// # Arguments
+///
+/// * `state` - Current pose as `[x, y, heading]`, meters and radians.
+/// * `max_speed` - Upper speed bound, meters per second.
+/// * `dt` - Integration step, seconds.
+///
+/// # Returns
+///
+/// The propagated pose, in the same layout as `state`.
+///
+/// # Errors
+///
+/// Returns [`Error::InvalidDimension`] when `state` is not length 3.
+pub fn step(state: &[f64], max_speed: f64, dt: f64) -> Result<[f64; 3], Error> {
+```
 
 See [style/comments.md](../style/comments.md#public-api-documentation-is-mandatory-at-librarymodule-boundaries)
 for what the family expects of a public API in any language.
@@ -317,6 +374,28 @@ Rust specifics:
 | Generic type parameters | single capital or short `PascalCase`: `T`, `Frame` |
 | Crates | `kebab-case` on disk, `snake_case` when imported |
 | Files | `snake_case`, matching the module they define |
+
+`PascalCase` capitalizes only the leading letter of an acronym:
+`HttpClient`, `KdTree`, `RrtPlanner`, `TlsConfig`. Full capitalization
+reads as several separate words to `clippy`, which flags it under
+`upper_case_acronyms`, and it leaves a name carrying two acronyms
+unparseable. A crate presenting its types to another language keeps that
+language's spelling at the boundary instead of renaming the Rust type,
+which under PyO3 is `#[pyclass(name = "RRTPlanner")]` and leaves the
+caller's import untouched.
+
+Name a trait after the role it describes, in the vocabulary the project
+already uses: `Planner`, `Sampler`, `CostTerm`. No `T` prefix, and no
+`-able` suffix forced onto a name that does not want one. When a trait
+replaces an interface declared in another language, whether a Python
+`Protocol`, a TypeScript interface, or a C++ abstract base, keep that
+interface's name: a one-to-one mapping between the two declarations is
+worth more than a marginally more idiomatic name.
+
+A crate being ported from another language may mirror the source module
+names for the duration of the port, so the two trees can be read side by
+side. Record that as a temporary deviation in the project's own guideline
+file and revisit it once the old sources are gone.
 
 Do not repeat the module name inside an item name. The path already
 carries it, so `gpio::LineDirection::In` reads better than
@@ -361,10 +440,36 @@ external input, and anything with a round-trip invariant. Reach for one
 where the input space is larger than the examples you would think to
 write.
 
-An unimplemented stub is `todo!()`, with its test marked
-`#[should_panic(expected = "not yet implemented")]` so the suite fails
-loudly until the real code lands, and the marker has to be removed in the
-same commit.
+A test name reads as a spec sentence and drops the `test_` prefix, since
+`#[test]` already marks the function and repeating the marker in the name
+says nothing: `fn plans_around_a_blocking_obstacle()` rather than
+`fn test_plan()`. See
+[style/naming.md](../style/naming.md#test-naming).
+
+An unimplemented stub is `todo!("<reason>")`, with its test marked
+`#[should_panic(expected = "<reason>")]` so the suite fails loudly until
+the real code lands:
+
+```rust
+pub fn plan(&self) -> Result<Path, Error> {
+    todo!("D* Lite: see docs/ROADMAP.md")
+}
+```
+
+```rust
+#[test]
+#[should_panic(expected = "D* Lite")]
+fn plan_is_not_implemented_yet() {}
+```
+
+The expected string does the work pytest's `strict=True` does: it names
+what is blocking the implementation, and it forces the test to change in
+the same commit that lands the real code. Since `clippy::todo` sits at
+`warn` in the baseline table and CI denies warnings, the stub also
+carries an `#[expect(clippy::todo, reason = "...")]` repeating that same
+blocker, which is what keeps a stub from going quiet. A bare `#[ignore]`
+with no reason is the Rust form of the bare skip
+[workflow/tdd.md](../workflow/tdd.md#no-silent-skips) prohibits.
 
 ## Dependencies
 
@@ -393,6 +498,53 @@ same commit.
   in the `# Safety` section what else the caller has to guarantee.
 - Generate the C header with `cbindgen` in `build.rs` rather than
   maintaining it by hand and letting it drift.
+
+## Crates called from another language
+
+The section above covers a C ABI. A crate compiled as an extension module
+for Python, Node, or Ruby is a different job, because the runtime on the
+other side has a garbage collector and an interpreter lock to work
+around. The examples below use PyO3; the principles hold for any of them.
+
+- **The foreign API is the contract.** Argument names, positional order,
+  default values, and raised error types are what the caller sees, and a
+  change to any of them breaks that caller regardless of what the Rust
+  signature looks like. Pin them with an explicit attribute
+  (`#[pyo3(signature = (...))]`) rather than relying on the Rust signature
+  to produce the right shape by accident, and test the foreign signature
+  rather than the Rust one.
+- **Release the interpreter lock around anything that computes.** Wrap the
+  body in `py.allow_threads` so a caller can run several calls in
+  parallel. A loop that calls back into the interpreter cannot do this,
+  which is the reason for the next rule.
+- **Injected callbacks become enums, never a bare foreign object.** A hot
+  loop invoking a caller-supplied closure reacquires the lock on every
+  iteration and gives back the entire speedup. Give the enum a native
+  variant per built-in policy, plus one variant holding the foreign
+  callable, and document that the foreign path is slow:
+
+  ```rust
+  enum Steerer {
+      Dubins(DubinsSteerer),
+      Straight(LineSteerer),
+      Python(Py<PyAny>),
+  }
+  ```
+
+- **Do not copy on the way in.** Borrow the caller's buffers
+  (`PyReadonlyArray2`) rather than converting them. Copying on the way out
+  is usually fine, since the result is smaller than the input and the
+  caller owns it afterward.
+- **Ship a stable-ABI artifact** (`abi3` for Python) so one wheel per
+  platform covers every interpreter version above the floor, and state
+  that floor in one place.
+- **Ship type declarations**, a `.pyi` per module or the equivalent, so
+  the caller's type checker and editor keep working against a compiled
+  artifact.
+- **Write doc comments for the foreign reader.** A comment on an exported
+  item becomes that object's documentation in the calling language, so
+  name arguments as that caller passes them and refer to that language's
+  types rather than to the binding's wrapper types.
 
 ## Required tooling
 
