@@ -9,6 +9,22 @@ versioning follows the scheme in
 
 ### Added
 
+- `style/defensive.md`: cross-language rules for code whose failure costs
+  more than a rerun. Where a contract check belongs, and the resolution of
+  the conflict between Meyer's non-redundancy rule and validating at a
+  public boundary; assertion practice with its published evidence stated
+  at the strength the evidence actually supports; failure response chosen
+  by context rather than by language; parse-do-not-validate and typestate;
+  the bounded-resource rules; and the numerical rules for comparison,
+  ordering, propagation, degenerate geometry, angles, and control output.
+  Closes with the rules that no linter can check.
+- `workflow/criticality.md`: three criticality levels assigned per module,
+  a requirement matrix across them, the mandatory/required/advisory
+  categories and the deviation procedure adapted from MISRA
+  Compliance:2020, verification tiers by run cost, the toolchain
+  constraints worth taking from tool qualification, and an explicit list
+  of what this family does not adopt and why.
+
 - `languages/rs.md`: a project layout section, covering the split of a
   workspace into crates along the dependency layering it wants enforced
   and keeping a library crate free of a binary's dependencies; acronym
@@ -22,6 +38,24 @@ versioning follows the scheme in
 - `languages/rs.md`: a per-crate error enum in a workspace, every one of
   them converting into a single root error, so a caller matches on one
   type without the leaf crates depending on each other.
+- `languages/rs.md`: bounded resources, covering the separation of
+  `no_std` from allocation, the cross-compile gate that is the only honest
+  proof of either, what fixed-capacity containers do not fix, and why no
+  lint enforces the no-recursion rule.
+- `languages/rs.md`: what each panic-freedom technique actually proves,
+  and the three caveats that decide how `#[no_panic]` is wired into CI.
+- `languages/rs.md`: the scheduled verification tools alongside the
+  blocking ones, with the calibrations that contradict the obvious
+  assumption: Miri cannot enter an FFI path, bounded model checking suits
+  integer logic rather than floating point, no branch-coverage gate
+  exists, and this class of tooling buys specification clarity more than
+  bug discovery.
+- `languages/rs.md`: a panic crossing into Python arrives as an exception
+  derived from `BaseException`, which an ordinary handler passes over.
+- `languages/py.md`: a critical-systems section covering the
+  tool-versus-product-code decision, why `assert` is not a production
+  check, the four incompatible tolerance defaults across the common
+  comparison APIs, and bounded work at algorithm entry points.
 
 ### Changed
 

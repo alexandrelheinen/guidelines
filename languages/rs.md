@@ -541,10 +541,129 @@ around. The examples below use PyO3; the principles hold for any of them.
 - **Ship type declarations**, a `.pyi` per module or the equivalent, so
   the caller's type checker and editor keep working against a compiled
   artifact.
+- **A panic reaches the caller as something it cannot catch.** PyO3
+  converts an unwind into an exception derived from `BaseException`, which
+  an ordinary `except Exception` handler passes over and which tends to
+  terminate the interpreter. A panic in a planner does not surface as a
+  catchable error, it takes the process down, which is a harder argument
+  against panicking constructs than a pure Rust library ever has.
 - **Write doc comments for the foreign reader.** A comment on an exported
   item becomes that object's documentation in the calling language, so
   name arguments as that caller passes them and refer to that language's
   types rather than to the binding's wrapper types.
+
+## Bounded resources
+
+Applies to a crate at criticality C2 in
+[workflow/criticality.md](../workflow/criticality.md). The reasoning
+behind these rules, and the cross-language form of them, is in
+[style/defensive.md](../style/defensive.md#bounded-resources).
+
+`#![no_std]` stops `std` being linked and swaps the prelude. It does not
+forbid allocation, because `alloc` is a separate opt-in. Those are two
+decisions, and only the second is the one bounded memory needs.
+
+The attribute is decorative unless CI proves it. A host build with a
+`std` feature enabled will happily miss a leaked `std::` path, so the only
+honest gate is a cross-compile against a bare-metal target, where no `std`
+exists to leak:
+
+```bash
+cargo check --target thumbv7em-none-eabihf --no-default-features
+```
+
+`heapless` supplies fixed-capacity containers with capacity as a const
+generic, turning a capacity failure into a `Result` instead of a
+reallocation. Note what it does not do: **it removes the allocator, not
+the panics.** `Vec::insert` returns a `Result` about capacity and still
+panics on an out-of-range index; `remove`, `swap_remove`, `drain`, and the
+`Extend` implementation all panic; and the containers dereference to
+slices, so every panicking slice method stays reachable, including the
+sort family, which may panic when the comparator is not a total order.
+That last one fires whenever the sort key is a float, which is the normal
+case for a cost. Pair fixed-capacity containers with `indexing_slicing`
+from the hardened tier, and prefer `get` to bare indexing.
+
+At a boundary that accepts variable-size input from outside, `try_reserve`
+is stable and is the right tool. There is no stable `try_push`, and the
+allocator API is still unstable.
+
+**No recursion on a bounded path.** Replace tree and graph recursion with
+an explicit stack of stated capacity, which gives the memory bound as well
+as the acyclic call graph. No lint enforces this: `unconditional_recursion`
+only catches a function that always recurses with no base case, and a
+correct recursive search does not trip it. It is a review rule, and the
+structural fix is what makes it checkable.
+
+**Every search, sampling, or solving entry point takes a budget** and
+returns a result that distinguishes convergence from budget exhaustion.
+Do not offer an unlimited variant of the same function a real-time caller
+uses.
+
+A fixed capacity pays twice: it is also the unwind bound a bounded model
+checker needs, so choosing the capacity makes the code verifiable and the
+verification justifies the capacity.
+
+## Proving a panic cannot happen
+
+`panic = "abort"` removes unwinding, not panicking. The panic branches and
+the formatting machinery stay in the binary, and only the behavior after a
+panic changes. The lint tiers above keep panicking constructs out of your
+own source, and say nothing about your dependencies.
+
+Past that, in increasing order of strength and cost:
+
+| Technique | What it proves | Cost |
+|---|---|---|
+| The hardened lint tier | This crate's own source contains no panicking construct | Free |
+| Fixed-capacity containers | No allocator, so no out-of-memory path. Capacity failures are `Result` | API friction |
+| `#[no_panic]` on selected entry points | Link-time proof across the whole dependency graph, for those functions only | Brittle |
+| Bounded model checking with `kani` | Machine-checked absence of panics, overflow, and undefined behavior, up to a stated bound | Harness authoring, slow |
+
+Three caveats decide how `#[no_panic]` is wired in, and all three surprise
+people. Detection happens at link time, so a library crate's own
+`cargo build` never triggers it and the crate needs a binary or an
+integration-test target that links the annotated functions. It requires
+optimization, so a debug build needs `opt-level = 1` and a release build
+needs link-time optimization. And it does nothing under `panic = "abort"`,
+so the proof runs in an unwind build while the shipped artifact still
+aborts.
+
+## Verification beyond the gate
+
+The tools in [Required tooling](#required-tooling) are the blocking ones.
+These are the scheduled ones, and they answer different questions.
+
+| Tool | Catches | When |
+|---|---|---|
+| `proptest` | Input-space defects in pure functions. Commit the regression files | Per pull request |
+| `cargo-mutants` | Tests that cannot fail, scoped to the diff | Per pull request |
+| `cargo-careful` | The Miri family of defects, on real machine code, including through FFI | Per pull request, cheap |
+| `kani` | Panics, overflow, and assertions over all inputs up to a bound | Scheduled |
+| `cargo-fuzz` | Crashes from adversarial input, time-boxed | Scheduled |
+| `loom` | Atomic ordering and interleavings | Only with hand-written shared state |
+
+Four calibrations worth carrying, because each one contradicts a
+reasonable assumption:
+
+- **Miri never sees an FFI path.** It interprets the program and fails on
+  a foreign call, so a test touching a C solver, a BLAS backend, or the
+  binding layer is invisible to it. `cargo-careful` covers that gap.
+- **Bounded model checking is a poor fit for floating-point code.** Kani's
+  own documentation states that it returns a nondeterministic value in
+  range for the transcendental functions, which makes it unsuitable for
+  reasoning about numerical precision. Point it at integer and index
+  logic: grid addressing, ring buffers, cost accumulation.
+- **There is no branch-coverage gate.** `cargo-llvm-cov` gates on lines,
+  regions, and functions; `--branch` needs nightly and has no
+  `--fail-under` counterpart. Region coverage is the closest available
+  proxy. Modified condition or decision coverage was removed from the
+  compiler in 2025 and is not available at all.
+- **This tooling buys specification clarity more than bug discovery.** The
+  Rust Foundation reported that the standard library verification effort,
+  across hundreds of proof harnesses, found no previously unknown
+  memory-safety defects, only specification and documentation problems.
+  Spend it on new unsafe code rather than on retrofitting reviewed code.
 
 ## Required tooling
 
