@@ -51,6 +51,9 @@ them for the task at hand rather than needing them every time:
   planner, or any numerical code.
 - [workflow/criticality.md](workflow/criticality.md), how much rigor a
   module earns and how a deviation from a rule gets recorded.
+- [domains/robotics.md](domains/robotics.md), for anything that moves a
+  machine: applicable standards, stop categories, input validation,
+  planner and controller invariants, and what a library may not claim.
 - `languages/<ext>.md` for whichever language the current task touches
   (`py.md`, `cpp.md`, `c.md`, `cmake.md`, `sh.md`, `rb.md`, `rs.md`,
   `js.md`, `ts.md`, `cs.md`).
