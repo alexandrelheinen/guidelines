@@ -57,13 +57,16 @@ shared library versus a single project's own files.
 
 The `style/` folder holds cross-language conventions that belong to no
 single language: `naming.md` for naming rules, `comments.md` for when and
-how to document code, and `errors.md` for error-handling strategy.
+how to document code, `errors.md` for error-handling strategy, and
+`defensive.md` for code whose failure costs more than a rerun.
 
 The `workflow/` folder holds the development-cycle guidelines. `sdd.md`
 and `tdd.md` define Spec-Driven Development and Test-Driven Development on
 their own; `integration.md` explains how the two combine into a single
-V-cycle. `branching.md`, `commits.md`, and `review.md` cover how work moves
-from a branch to a merged pull request.
+V-cycle. `criticality.md` scales that rigor to what a failure costs and
+defines the deviation procedure for breaking a rule on purpose.
+`branching.md`, `commits.md`, and `review.md` cover how work moves from a
+branch to a merged pull request.
 
 The `languages/` folder holds one file per language, named after its file
 extension rather than its full name (`py.md`, `cpp.md`, `rs.md`, and so

@@ -44,9 +44,13 @@ than improvising a structure each time.
 These stay as plain links rather than imports, since a session consults
 them for the task at hand rather than needing them every time:
 
-- [style/comments.md](style/comments.md) and
-  [style/errors.md](style/errors.md), the remaining cross-language style
-  rules.
+- [style/comments.md](style/comments.md),
+  [style/errors.md](style/errors.md), and
+  [style/defensive.md](style/defensive.md), the remaining cross-language
+  style rules. Read `defensive.md` before touching a control loop, a
+  planner, or any numerical code.
+- [workflow/criticality.md](workflow/criticality.md), how much rigor a
+  module earns and how a deviation from a rule gets recorded.
 - `languages/<ext>.md` for whichever language the current task touches
   (`py.md`, `cpp.md`, `c.md`, `cmake.md`, `sh.md`, `rb.md`, `rs.md`,
   `js.md`, `ts.md`, `cs.md`).
