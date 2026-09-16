@@ -7,6 +7,35 @@ versioning follows the scheme in
 
 ## [Unreleased]
 
+### Added
+
+- `languages/rs.md`: a project layout section, covering the split of a
+  workspace into crates along the dependency layering it wants enforced
+  and keeping a library crate free of a binary's dependencies; acronym
+  and trait naming, and the file naming a port may deviate from; the
+  rustdoc spelling of the Google-style docstring sections as a mapping
+  table with a worked example; test naming; and a section on crates
+  compiled as an extension module for another language, covering the
+  foreign signature as the contract, releasing the interpreter lock,
+  injected callbacks as enums, borrowing the caller's buffers, stable-ABI
+  artifacts, and shipping type declarations.
+- `languages/rs.md`: a per-crate error enum in a workspace, every one of
+  them converting into a single root error, so a caller matches on one
+  type without the leaf crates depending on each other.
+
+### Changed
+
+- `workflow/tdd.md`: the Rust entry for marking intentionally
+  unimplemented work now pairs `todo!("<reason>")` with
+  `#[should_panic(expected = "<reason>")]`, so the marker names what is
+  blocking the work and has to change in the commit that lands the
+  implementation. Test layout notes that Rust's unit/integration split is
+  forced by visibility rather than chosen.
+- `style/naming.md`: test names drop the `test_` prefix in a framework
+  whose attribute already marks the function.
+- `style/comments.md`: the Rust entry names the rustdoc headings instead
+  of deferring to the C++ and Python shapes.
+
 ## [1.2.0] - 2026-09-10
 
 ### Added

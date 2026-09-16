@@ -70,9 +70,11 @@ suite fails loudly until the real implementation lands:
   means the marker itself fails once the stub starts passing, forcing you
   to remove the marker rather than forget it.
 - C++: `GTEST_SKIP()` with a descriptive reason string.
-- Rust: `todo!()` in the stub, and mark its test
-  `#[should_panic(expected = "not yet implemented")]`, which fails once
-  the stub stops panicking and forces the marker out.
+- Rust: `todo!("<reason>")` in the stub, and mark its test
+  `#[should_panic(expected = "<reason>")]`: the expected string names what
+  is blocking the work and forces the test to change in the same commit
+  that lands the implementation, the way `strict` does in pytest. See
+  [languages/rs.md](../languages/rs.md#testing).
 
 Remove the marker in the same commit that lands the real implementation.
 Do not let a codebase accumulate permanently skipped tests.
@@ -91,6 +93,12 @@ Tests mirror the source tree: `tests/foo/bar_test.py` for
 `src/pkg/foo/bar.py`, or co-located `foo.test.ts` next to `foo.ts` for
 JS/TS. Pick one convention per project and apply it uniformly: do not mix
 mirrored and co-located layouts in the same codebase.
+
+Rust is the one language where the split is forced rather than chosen:
+a private item is unreachable from `tests/`, so unit tests covering
+private behavior live in an inline `#[cfg(test)] mod tests` and only the
+integration tests mirror. See
+[languages/rs.md](../languages/rs.md#testing).
 
 ## Test naming
 

@@ -50,8 +50,13 @@ def haversine_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> fl
     """
 ```
 
-**Rust**: `///` doc comments on every public item, following the same
-brief/params/returns shape as the above where relevant to the type.
+**Rust**: `///` doc comments on every public item, using rustdoc's
+headings for the same sections: `# Arguments`, `# Returns`, `# Errors`
+for anything returned as `Err`, `# Panics` for a caller bug, and
+`# Examples` for a doctest, in that order where they apply. Enforced by
+the `missing_docs` lint in the workspace lint table. See
+[languages/rs.md](../languages/rs.md#documentation) for the full mapping
+and an example.
 
 ## What never needs a comment
 

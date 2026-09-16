@@ -79,6 +79,10 @@ depending on the framework's idiom:
 - BDD-style: `test_<behavior>` (pytest) or `it("does X")` (JS test
   runners).
 
+Drop the `test_` prefix in a framework whose attribute already marks the
+function, such as Rust's `#[test]`: `fn rejects_an_empty_path()`.
+Repeating the marker in the name says nothing.
+
 Do not name a test after its inputs (`test_case_1`): name it after the
 behavior it proves.
 
