@@ -9,6 +9,13 @@ versioning follows the scheme in
 
 ### Added
 
+- `style/parameters.md`: the four-part split of an algorithm (inputs,
+  outputs, parameters, logic), the rule that design parameters live in
+  configuration rather than in source, what may stay as a code literal
+  (unit conversions, algebraic identities, language and architecture
+  thresholds), and the ban on comments that quote shipped configuration
+  values. `style/comments.md` links to it.
+
 - `domains/robotics.md`, and the `domains/` folder it opens, for practice
   tied to a problem domain rather than to a language. It covers which
   safety standards actually apply to a mobile robot as against a
