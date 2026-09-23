@@ -66,6 +66,13 @@ and an example.
 - The obvious control flow (`# loop over sensors` above a `for sensor in
   sensors:` is noise).
 
+## Comments do not quote configuration
+
+See [parameters.md](parameters.md). A comment describes logic and invariants.
+It does not restate a YAML number, and it does not claim what happens at a
+particular shipped setting. Provenance for a value lives beside that value
+in configuration or in a measurements document.
+
 ## `any`/escape-hatch justification
 
 Any use of a type-system escape hatch (`any` in TypeScript, `# type: ignore`

@@ -45,10 +45,13 @@ These stay as plain links rather than imports, since a session consults
 them for the task at hand rather than needing them every time:
 
 - [style/comments.md](style/comments.md),
-  [style/errors.md](style/errors.md), and
-  [style/defensive.md](style/defensive.md), the remaining cross-language
+  [style/errors.md](style/errors.md),
+  [style/defensive.md](style/defensive.md), and
+  [style/parameters.md](style/parameters.md), the remaining cross-language
   style rules. Read `defensive.md` before touching a control loop, a
-  planner, or any numerical code.
+  planner, or any numerical code. Read `parameters.md` before adding a
+  numeric literal that is not an algebraic identity or a language
+  threshold.
 - [workflow/criticality.md](workflow/criticality.md), how much rigor a
   module earns and how a deviation from a rule gets recorded.
 - [domains/robotics.md](domains/robotics.md), for anything that moves a
