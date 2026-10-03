@@ -2,50 +2,55 @@
 
 Structural rules for long-form published content: articles, in-depth
 posts, and anything meant to be read start to finish by someone outside
-the project. This file builds on [writing.md](writing.md): the vocabulary,
-typography, and cadence rules there apply here without repetition. This
-file only adds what is specific to long-form structure.
+the project. This file builds on [writing.md](writing.md). Vocabulary,
+typography, cadence, and the argument rules there apply here without
+repetition. This file adds the arrangement a piece of that length needs:
+one claim, reasons in an order, and grounds a reader can check.
 
 ## Sources
 
-Structural guidance below draws on the newswriting tradition (the inverted
-pyramid and its feature-writing alternative) and on the shared clarity
-principles behind the Google Developer Documentation Style Guide and the
-Microsoft Writing Style Guide: know the audience, establish a distinctive
-voice, and make every word earn its place.
+Arrangement below draws on the newswriting tradition (the inverted
+pyramid and its feature-writing alternative), on Barbara Minto's pyramid
+(one governing thought, the reasons beneath it, the evidence beneath
+each reason), and on George Gopen and Judith Swan's account of where a
+reader looks for the point. Claim, warrant, and stake are defined in
+[writing.md](writing.md#argument). Audience and wording follow the
+[Google developer documentation style guide](https://developers.google.com/style)
+and the [Microsoft Writing Style Guide](https://learn.microsoft.com/en-us/style-guide/welcome/).
+Know who is reading, and make every word earn its place.
 
 ## Before drafting
 
-- **The angle is explicit.** One sentence states what happened and why it
-  matters to the reader, not only to the author.
-- **The scope is bounded.** The piece covers one arc: problem, attempt,
-  outcome. A side quest belongs in another piece or a short aside, not a
-  detour in this one.
+- **The claim is one sentence.** It says what the reader should accept or
+  do, and a skeptical reader in this audience could reject it. "Notes on
+  the migration" names a topic. The claim is the judgment about it.
+- **The stake is on the page.** Who has to act on the claim, or what
+  follows if it is accepted.
+- **The scope is one argument.** The piece covers one arc: the question,
+  the claim, the reasons, and the limit. A side quest belongs in another
+  piece or a short aside.
 - **Facts are verified** against live behavior and vendor documentation,
-  not memory or assumption.
+  so the grounds are something the reader can check.
 - **Know the reader.** A piece for practitioners in the same field can use
-  the field's real vocabulary; a piece for a general audience needs the
-  jargon translated on first use, not dropped in and left for the reader
-  to look up.
+  the field's real vocabulary, and can leave a shared warrant implicit. A
+  piece for a general audience translates the jargon on first use and
+  writes the warrant out.
 
 ## Choosing a lead
 
 Two structures cover most technical writing, and the choice should be
 deliberate rather than default:
 
-- **Inverted pyramid.** State the outcome and its cost or constraint in
-  the first paragraph, then add supporting detail in descending order of
-  importance. Use this for anything closer to an announcement, a status
-  update, or a reference piece, where a reader who stops after one
-  paragraph should already have the key fact. This is the right default
-  for most engineering writing, since readers scan before they commit to
-  reading in full.
-- **Delayed, narrative lead.** Open on a concrete scene or moment before
-  stating the point, then earn the reveal. This suits a personal or
-  feature-style narrative where the story's shape is part of what the
-  piece is arguing. A delayed lead still has to reach the stakes within
-  the first two or three paragraphs; delaying past that reads as
-  withholding, not building tension.
+- **Inverted pyramid.** State the claim and its stake in the first
+  paragraph, then the reasons and grounds in descending order of
+  importance. Use this for an announcement, a status update, or a
+  reference piece, where a reader who stops after one paragraph should
+  already hold the claim. This is the right default for most engineering
+  writing, since readers scan before they commit to reading in full.
+- **Delayed, narrative lead.** Open on a concrete scene, then reach the
+  claim within the first two or three paragraphs. This suits a personal
+  or feature-style narrative where the path to the claim is part of the
+  argument. Waiting longer withholds the point.
 
 Whichever structure is chosen, lead with something concrete: an outcome, a
 number, a moment, never a throat-clearing preamble about what the article
@@ -53,10 +58,11 @@ is about to cover.
 
 ## Structure
 
-- **Sections follow chronology or causality, not tool categories.** Prefer
-  "why X failed" before "how Y works," organized around the actual
-  sequence of events or reasoning, not a table of contents assembled by
-  topic.
+- **Sections are the reasons, in the order the argument needs.** That
+  order is cause, deduction, or time. Use time when earlier events are
+  why the claim holds. A section opens with its reason and then gives the
+  grounds. The heading can name the subject. The first sentence is still
+  the reason.
 - **Headings are specific.** "Cloudflare Pages" beats "The solution." No
   colon-subtitle headings (see
   [writing.md](writing.md#banned-structural-patterns)).
@@ -70,16 +76,18 @@ is about to cover.
 - **A glossary is optional**, and only earns a place when a term repeats
   across multiple sections. Define a term used once at its first
   occurrence in the body instead.
-- **No hollow conclusion.** Do not restate the introduction. End on what
-  is still open, what it cost, or what you would do differently next
-  time.
+- **No hollow conclusion.** End on what is still open, what it cost, or
+  what you would do differently next time. Restating the introduction,
+  or posing a question the piece was written to answer, leaves that
+  ending empty.
 
 ## Concrete over abstract
 
-Lead with credit counts, deploy times, error messages, and public URLs
-before reaching for an abstract framing of what they mean. A reader
-remembers "the build took eleven minutes and failed on the third retry"
-far longer than "the build process had significant reliability issues."
+Lead with credit counts, deploy times, error messages, and public URLs.
+Those details are the grounds. The sentence that says what they show is
+the reason, and it has to be on the page. A reader remembers "the build
+took eleven minutes and failed on the third retry" far longer than "the
+build process had significant reliability issues."
 
 ## Cross-links
 
@@ -108,11 +116,12 @@ to a private repository tree.
 
 ## Pre-publish checklist
 
-- [ ] Angle, scope, and audience are all explicit (see
-      [Before drafting](#before-drafting)).
-- [ ] Lead states a concrete outcome or moment within the first two
-      paragraphs.
-- [ ] Structure follows chronology or causality, not a topic list.
+- [ ] The claim is one sentence a skeptical reader could reject, and the
+      stake is named (see [Before drafting](#before-drafting)).
+- [ ] The lead reaches that claim within the first two paragraphs.
+- [ ] Each section opens with the reason it contributes, then the grounds.
+      The order is cause, deduction, or time, whichever the warrant
+      requires.
 - [ ] No colon-subtitle headings; each heading states what is in the
       section.
 - [ ] Every table and diagram earns its place (see

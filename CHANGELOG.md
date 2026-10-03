@@ -73,6 +73,19 @@ versioning follows the scheme in
 
 ### Changed
 
+- `agents/writing.md` now requires prose that asks a reader to believe or
+  do something to be an argument: one claim a skeptical reader could
+  reject, the grounds, and the warrant that connects them, with the point
+  placed where a reader looks for emphasis. A list is allowed under a
+  sentence that says what the items show. Emails, comments, and short
+  posts use the same shape and show less ground. The claim stays with the
+  human author. An agent who cannot find one asks, rather than inventing
+  the point of view. The sources added for that rule are Toulmin, Minto,
+  Gopen and Swan, Williams and Bizup, Booth, Graff and Birkenstein,
+  Perelman and Olbrechts-Tyteca, and Aristotle's "Rhetoric".
+  `agents/article.md` treats each section as a reason under the piece's
+  claim. Commit bodies, review comments, code comments, and the pull
+  request summary point at the same rule.
 - `workflow/tdd.md`: the Rust entry for marking intentionally
   unimplemented work now pairs `todo!("<reason>")` with
   `#[should_panic(expected = "<reason>")]`, so the marker names what is

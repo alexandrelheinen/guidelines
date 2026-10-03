@@ -12,7 +12,7 @@ demand instead.
 |---|---|
 | Project-specific setup (how to run the dev server, non-obvious environment quirks) | Naming, comments, and error-handling conventions that apply everywhere |
 | The project's own spec documents (`docs/specification.md`, feature specs) | The SDD/TDD process itself |
-| Domain-specific rules (e.g. an editorial voice for one specific site) | The general anti-AI-slop writing rules that voice builds on |
+| Domain-specific rules (e.g. an editorial voice for one specific site) | The prose rules (clarity, argument, and the bans on generated-sounding prose) that a project's own voice builds on |
 | One-off gotchas discovered while working in this codebase | Conventions stable enough to apply across projects |
 | Which third-party toolkits the project installs, and their pins | Which of this library's rules those toolkits override, in [integrations/toolkits.md](../integrations/toolkits.md) |
 

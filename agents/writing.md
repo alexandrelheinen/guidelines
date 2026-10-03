@@ -1,35 +1,53 @@
 # Writing
 
-Cross-project rules for how any English prose should read: PR descriptions,
-commit bodies, reports, README introductions, documentation, and this
-library's own text. Every project in this family follows these rules for
-any prose it produces, whether written by a human or an agent.
+Cross-project rules for how any English prose should read: articles,
+posts, emails, comments, pull request descriptions, commit bodies,
+reports, README introductions, documentation, and this library's own
+text. Every project in this family follows these rules for any prose it
+produces, whether written by a human or an agent.
 
-Long-form content specifically, articles, posts, and similar published
-pieces, has its own structural rules in [article.md](article.md), which
-builds on this file rather than repeating it. This file is the base layer:
-vocabulary, typography, cadence, and the patterns that make prose read as
-machine-generated regardless of what it is about.
+Long-form content, articles and posts meant to be read start to finish,
+has its own structural rules in [article.md](article.md), which builds on
+this file rather than repeating it. This file is the base layer:
+argument, vocabulary, typography, cadence, and the patterns that make
+prose read as machine-generated regardless of what it is about.
 
 Reference and checklist material (tables, spec templates, bulleted rule
 lists, most of this library) follows the typography and vocabulary rules
-below but is exempt from the prose-structure rules aimed at narrative
-writing. See [Reference and checklist documents](#reference-and-checklist-documents).
+below. It is exempt from the cadence and argument-shape rules aimed at
+narrative writing, except that the sentence or heading above a list
+still states what the list shows. See
+[Reference and checklist documents](#reference-and-checklist-documents).
 
 ## Sources
 
-This guideline draws on George Orwell's ["Politics and the English
-Language"](https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/)
-(1946), plain-language writing standards used in government style guides
-(the UK's [Style Manual](https://www.stylemanual.gov.au/blog/basics-plain-language)
-and [ONS content guide](https://service-manual.ons.gov.uk/content/writing-for-users/plain-language)),
-current published research on AI-generated text detection covering
-perplexity and burstiness, and the field guides linked in
-[Further reading](#further-reading). The em dash allowance in
-[Typography](#typography) is the one rule set by precedent rather than by
-that research: it matches the editorial voice already established and
-published under this family's most content-heavy project, rather than the
-zero-tolerance stance a purely research-driven rule would otherwise set.
+Wording and sentence-level clarity draw on George Orwell's ["Politics and
+the English Language"](https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/)
+(1946), on government plain-language standards (the Australian
+[Style Manual](https://www.stylemanual.gov.au/blog/basics-plain-language)
+and the UK [ONS content guide](https://service-manual.ons.gov.uk/content/writing-for-users/plain-language)),
+and on Joseph M. Williams and Joseph Bizup, "Style: Lessons in Clarity
+and Grace", which puts the actor in the subject and the action in the
+verb, and opens a sentence on what the reader already knows.
+
+What makes a text an argument, a case rather than a row of remarks, draws
+on Stephen Toulmin, "The Uses of Argument" (Cambridge University Press,
+1958), Barbara Minto, "The Pyramid Principle", Gerald Graff and Cathy
+Birkenstein, "They Say / I Say", Wayne Booth, "The Rhetorical Stance"
+(1963), and Chaim Perelman and Lucie Olbrechts-Tyteca, "The New Rhetoric"
+(1958). Aristotle's "Rhetoric" is the older statement of the same demand:
+the reasons that count are the ones this audience can actually be moved
+by. George Gopen and Judith Swan, "The Science of Scientific Writing"
+("American Scientist", 1990), supply the placement rules, topic position
+and stress position, that make the order visible. Links are in
+[Further reading](#further-reading).
+
+The same further-reading list covers published work on perplexity and
+burstiness, and the field guides for prose that reads as
+machine-generated. The em dash allowance in [Typography](#typography) is
+the one rule set by precedent in this family. It matches the editorial
+voice already published under the family's most content-heavy project. A
+rule drawn only from the detection research would have banned the mark.
 
 ## Fundamental rule
 
@@ -41,15 +59,18 @@ Correct what is grammatically wrong, fill gaps when asked, rephrase awkward
 sentences without changing what they say, and ask what is missing instead
 of inventing it. Completing a draft without asking what is missing counts
 as authoring, which is out of scope unless the project explicitly asks for
-it.
+it. Inventing the claim is authoring too. When a draft has no claim, ask
+what it is.
 
 ## Plain English fundamentals
 
 From Orwell and the plain-language tradition, applied to technical writing:
 
-- **Active voice.** "The script validates the input," not "the input is
-  validated by the script." Active voice states who does what and removes
-  ambiguity about responsibility.
+- **Active voice, with the actor as the subject and the action as the
+  verb.** "The script validates the input," not "the input is validated
+  by the script," and not "validation of the input occurs in the script."
+  The first states who does what. The second hides the actor, and the
+  third hides the action inside a noun.
 - **The short word over the long one, and the plain word over the jargon
   term**, unless the technical term is the one the reader actually needs
   (a protocol name, a function name).
@@ -65,6 +86,77 @@ From Orwell and the plain-language tradition, applied to technical writing:
 - Orwell's closing rule applies here too: break any rule on this page
   sooner than produce something clumsy. These are defaults, not a
   mechanical filter.
+
+## Argument
+
+Clarity is how a sentence is built. Rhetoric is the case the sentences
+carry, one claim a reader can refuse, the reasons they would accept it,
+and an order that shows what each reason does. Articles, posts, emails,
+review and issue comments, commit bodies, pull request descriptions, and
+any paragraph that introduces a reference page all owe that shape.
+
+Facts, opinions, assertions, and questions earn a place as parts of the
+case. A row of them with the relation left unstated is a list, so the
+point has to be written in the text.
+
+The claim is one sentence a skeptical reader in this audience could
+reject. It states what should be believed or done. A subject-area label
+such as "notes on the migration" names a topic. "This is cleaner," with
+nothing under it, is an opinion. Stephen Toulmin's working minimum is a
+**claim**, the **grounds** that support it, and the **warrant**, the
+reason those grounds count as support. Write the warrant whenever this
+reader cannot be counted on to supply it. State a limit, or the objection
+that would sink the claim, when silence would let the claim say more than
+the grounds support.
+
+Say who has to act on the claim, or what follows if it is accepted. That
+is the stake, and it belongs on the page. The claim answers a question
+this reader has, or would have once the situation is in view. A question
+inside the text poses that problem.
+Closing on a question is a finished ending only when the claim itself is
+that the question is open, and the text says what that openness costs.
+
+Readers take the structure as the emphasis, so the order has to place the
+point where they look for it. George Gopen and Judith Swan name the two
+positions:
+
+- The opening of a sentence links back to what the reader already holds.
+  Sentences that each start on a fresh subject stay a list.
+- The point lands at the end of the sentence, the paragraph, and the
+  section. That is where a reader places emphasis. A point left in the
+  middle is a point the structure discards.
+
+A list belongs under a sentence that says what the items jointly show. A
+count such as "there are three reasons" still needs that sentence, which
+is Barbara Minto's test for a governing thought. The same shape scales to
+the whole document. One governing claim, then the reasons, then the
+grounds under each reason. Where the reader still needs the context, open
+with a situation they accept and the complication that makes the claim
+the question to answer, then give the claim.
+
+When the source material has no claim, ask for it. Choosing the point of
+view is authoring, which the [fundamental rule](#fundamental-rule) keeps
+with the human who owns the text.
+
+A figure of speech has to carry a reason. Antithesis, triads, and
+punchlines that carry none stay banned under
+[Banned structural patterns](#banned-structural-patterns).
+
+## Emails, comments, and short posts
+
+The shape stays the same at any length. A shorter text shows less ground.
+
+- **Email, and any message that asks for an action.** The subject line
+  carries the claim or the ask. The first sentence restates it with the
+  reason, and the message makes one ask. The rest is the grounds the
+  recipient needs in order to act.
+- **A comment** on a review, an issue, or a post. One claim, why it
+  matters in this thread, and the evidence at hand: a line, a quoted
+  passage, a result. A reaction, a question with no stake, or a stack of
+  separate objections leaves the thread with nothing it can use.
+- **A short post.** One claim, the warrant, and enough grounds to check
+  the warrant. A post long enough to need sections follows
+  [article.md](article.md), where each section is itself a reason.
 
 ## Documentation is timeless
 
@@ -101,25 +193,24 @@ weight, read as machine cadence even when every fact is correct.
 Connected prose joins ideas through subordinate clauses and ordinary
 connectors (*because*, *while*, *which*, *when*, *so*, *although*) instead
 of dropping bare fragments next to each other and leaving the reader to
-infer the relationship. Compare:
+infer the relationship. That connector is the warrant from
+[Argument](#argument), and the next sentence should open on something the
+previous one already gave the reader. Compare:
 
 - Fragmented: "New role. New codebase. One week in."
 - Connected: "One week into a new role and a new codebase, the parts that
   slow me down are not the parts I expected."
 
-Vary sentence length on purpose, but every sentence should still be a
-complete, connected thought. Five short sentences in a row is a drumbeat,
-not a voice. Published research on AI-generated text describes this
-property as **burstiness**: human writing varies sentence length and
-structure noticeably from one sentence to the next (a long, clause-heavy
-sentence followed by a short one, then another extended one), while
-generated text tends toward uniform length and a repeated
-subject-verb-object shape. A companion measure, **perplexity**, captures
-how predictable each word choice is; consistently picking the single most
-likely next word reads as flat even when it is grammatically perfect. Aim
-for writing a competent reader would call surprising in its word choices
-and uneven in its rhythm, in the way an actual person's writing is uneven,
-not for writing that hits a uniform, safe average everywhere.
+Vary sentence length on purpose. Every sentence should still be a
+complete, connected thought, and five short sentences in a row is a
+drumbeat. Published work on AI-generated text calls that unevenness
+**burstiness** and calls predictable word choice low **perplexity**. Aim
+for a long, clause-heavy sentence followed by a short one, then another
+extended one, using a word a competent reader would not have predicted.
+Uniform length and the single most likely next word read as generated
+even when the grammar is perfect. The limits of both measures
+as a self-check are under
+[Signals of AI-generated prose](#signals-of-ai-generated-prose).
 
 ## Typography
 
@@ -259,37 +350,64 @@ next to a bullet term is not narrative prose and does not need to satisfy
 the cadence rules; a three-paragraph introduction to a spec document does,
 including the occasional-em-dash allowance above.
 
+The argument rule still applies one level up. The heading or the sentence
+above a list states what the items jointly show, and the bullets are the
+grounds, so the list can stay a list. The introduction, when a reference
+page has one, argues for the page the way any other prose does.
+
 ## Self-review checklist
 
-Run this before finishing any draft, whether it is a report or a
-one-paragraph PR description:
+Run this before finishing any draft, whether it is an email, a comment,
+a report, or a one-paragraph pull request description:
 
-1. Scan for every word in [Banned vocabulary](#banned-vocabulary); replace
+1. State the claim in one sentence a skeptical reader could reject, and
+   say who acts on it or what follows if it is accepted. A draft that is
+   only facts, opinions, assertions, or questions is still a list. Ask
+   for the claim, or cut until one remains. On a reference page, the
+   claim is the sentence or heading the list hangs from.
+2. For each reason, confirm the warrant is on the page or already held by
+   this reader. Any list should sit under a sentence that says what the
+   items show, and the point of a paragraph should fall in its last
+   sentence.
+3. Scan for every word in [Banned vocabulary](#banned-vocabulary); replace
    each with something specific to this sentence.
-2. Check every header, title, and table cell for an em dash, and check the
+4. Check every header, title, and table cell for an em dash, and check the
    body for more than an occasional one; check everywhere for en dashes,
    curly quotes, and the ellipsis character. Replace with plain
    equivalents.
-3. Scan for English contractions and spell them out in full.
-4. Check for any "not X, but Y" or "it sounds like X, but Y" construction
+5. Scan for English contractions and spell them out in full.
+6. Check for any "not X, but Y" or "it sounds like X, but Y" construction
    and rewrite it as a direct statement.
-5. Check for a list padded or trimmed to exactly three items for
+7. Check for a list padded or trimmed to exactly three items for
    rhetorical effect.
-6. Check for disconnected fragments dropped next to each other; connect
+8. Check for disconnected fragments dropped next to each other; connect
    them with a conjunction that states why they belong together.
-7. If explaining several points in a row, confirm they do not all share
+9. If explaining several points in a row, confirm they do not all share
    one sentence template.
-8. Read the draft once for rhythm: if every sentence lands with the same
-   weight, combine or split until it varies.
-9. Cut throat-clearing openers unless the human author wrote them on
-   purpose.
-10. For a README or a document under `docs/`, scan for dates, "recently",
+10. Read the draft once for rhythm: if every sentence lands with the same
+    weight, combine or split until it varies.
+11. Cut throat-clearing openers unless the human author wrote them on
+    purpose.
+12. For a README or a document under `docs/`, scan for dates, "recently",
     "currently", and any sentence describing what the project used to be.
     Cut them: that belongs in git and the changelog.
 
 ## Further reading
 
+The works below are the ones the rules above come from.
+
 - [Politics and the English Language, George Orwell (1946)](https://www.orwellfoundation.com/the-orwell-foundation/orwell/essays-and-other-works/politics-and-the-english-language/)
+- [Style: Lessons in Clarity and Grace, Joseph M. Williams and Joseph Bizup](https://en.wikipedia.org/wiki/Style:_Lessons_in_Clarity_and_Grace)
+- [The Science of Scientific Writing, George Gopen and Judith Swan, American Scientist 78.6 (1990)](https://www.cs.tufts.edu/comp/105-2016s/readings/sci.html)
+- [The Uses of Argument, Stephen Toulmin (Cambridge University Press, 1958; updated edition 2003)](https://doi.org/10.1017/CBO9780511840005)
+- [The Minto Pyramid Principle, Barbara Minto](https://www.barbaraminto.com/concept)
+- [They Say / I Say, Gerald Graff and Cathy Birkenstein (W. W. Norton)](https://wwnorton.com/books/they-say-i-say/)
+- [The Rhetorical Stance, Wayne Booth, College Composition and Communication 14.3 (1963)](https://www.jstor.org/stable/355049)
+- [The New Rhetoric, Chaim Perelman and Lucie Olbrechts-Tyteca (Presses Universitaires de France, 1958; English translation, University of Notre Dame Press, 1969)](https://undpress.nd.edu/9780268004460/the-new-rhetoric/)
+- [Rhetoric I.2, Aristotle, translated by J. H. Freese](http://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0060:book=1:chapter=2)
+
+The field guides below cover prose that reads as machine-generated.
+
 - [What is perplexity and burstiness for AI detection?, GPTZero](https://gptzero.me/news/perplexity-and-burstiness-what-is-it/)
 - [How to Tell if Writing is AI](https://huntingthemuse.net/library/how-to-tell-if-writing-is-ai)
 - [Cleaning Up AI Prose: An Editorial Rulebook for Agents](https://thinkwright.ai/editorial-standards)

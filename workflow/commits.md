@@ -17,7 +17,10 @@ Types: `feat`, `fix`, `docs`, `test`, `refactor`, `perf`, `build`, `ci`,
 `chore`, `style`, `revert`. Subject in imperative mood (`Add`, `Fix`,
 `Update`, not `Added`/`Fixes`), no trailing period, ideally under ~72
 characters. Body wraps around 72 columns and explains *why*, not just
-*what*: the diff already shows what changed.
+*what*: the diff already shows what changed. That *why* is the argument
+from [agents/writing.md](../agents/writing.md#argument). The subject
+names the claim, and the body gives the warrant and the grounds. A body
+that restates the diff is a list of facts.
 
 **Plain imperative-mood subjects** (no typed prefix) are an accepted
 alternative for content-heavy or documentation-first repos, where most

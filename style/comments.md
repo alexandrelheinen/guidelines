@@ -9,7 +9,10 @@ say so in the project's own guideline file: do not mix silently.
 Code should be self-explanatory through naming and structure. Comment only
 non-obvious logic, business rules, or a constraint that is not visible from
 the code itself (a workaround for a specific bug, a hidden invariant, why an
-optimization exists). Do not narrate what the code already says.
+optimization exists). Do not narrate what the code already says. A comment
+that belongs is the short argument in
+[writing.md](../agents/writing.md#argument), one claim a reader of the
+code cannot see, and the reason that claim holds.
 
 This is the default for Python application code, JS/TS, and Rust, and it
 governs private/internal C++ functions even in projects that require
