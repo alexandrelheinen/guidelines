@@ -48,7 +48,8 @@ than repeating their content.
 
 The `agents/` folder holds guidance about how an agent should behave and
 write. `writing.md` covers the prose rules that apply everywhere:
-vocabulary, typography, and cadence. `article.md` adds structure rules
+argument, vocabulary, typography, and cadence, including the short forms
+used in emails, comments, and posts. `article.md` adds structure rules
 specific to long-form published content, building on `writing.md` rather
 than repeating it. `claude.md` documents how a project should structure
 its own agent-instruction files, plus the no-fabricated-evidence rule and

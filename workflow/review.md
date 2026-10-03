@@ -31,6 +31,11 @@ asserting its own, which is the kind of skill worth reaching for. See
 The mechanism is free to change. What does not change is that both axes get
 covered and that the reviewer is not the same context that wrote the code.
 
+Write the review comment as one claim, the reason it matters in this
+diff, and the evidence. That is what
+[writing.md](../agents/writing.md#emails-comments-and-short-posts) asks of
+any comment.
+
 ## Human-only merge
 
 Agents open and update pull requests; they do not merge them, ever,

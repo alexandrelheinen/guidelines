@@ -1,7 +1,9 @@
 ## Summary
 
-What changed and why (1-3 bullets): link the issue and spec this
-implements.
+State the claim in one to three sentences. Say what changed, why this
+was the change to make, and what a reviewer should conclude. Link the
+issue and the spec. Leave the file-level account to the diff. See
+`agents/writing.md`.
 
 ## Acceptance criteria
 
