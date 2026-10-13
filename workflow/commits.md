@@ -56,4 +56,7 @@ buried in the body prose.
 ## What never goes in a commit
 
 Secrets, `.env` files, build output (`_site/`, `dist/`, `node_modules/`),
-or generated artifacts that belong in `.gitignore` instead.
+or generated artifacts that belong in `.gitignore` instead. How a
+credential is issued and where it is stored is in
+[delivery.md](delivery.md#credentials). The rule is one named, revocable
+token per machine, in the operating system keychain or a vault.

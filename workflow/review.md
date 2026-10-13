@@ -7,8 +7,8 @@ the others miss:
 
 | Layer | Mechanism | Purpose |
 |---|---|---|
-| 1, guidelines | Thin agent-instruction files pointing to this library / the project's `CONTRIBUTING.md` | Same rules for humans and agents; no separate, weaker standard for AI-authored work |
-| 2, automation | CI/CD quality gates (build, tests, coverage, lint) | Blocks broken builds and regressions mechanically, not by trusting review to catch everything |
+| 1, guidelines | Thin agent-instruction files pointing to this library, the project's README and `docs/`, and its `CONTRIBUTING.md` | Same rules for humans and agents; no separate, weaker standard for AI-authored work |
+| 2, automation | The versioned pipeline in [delivery.md](delivery.md): build, tests, coverage, lint, and the security checks | Blocks a broken build, a regression, a leaked secret, a weak dependency, and insecure code. The check runs on the merge result with the target branch and is required to merge |
 | 3, review | Manual merge, human judgment | Validates intent and architecture fit that automation cannot check |
 
 ## Running a review
@@ -68,7 +68,9 @@ the same PR that needed it to pass.
   anything).
 - For UI changes: visual evidence (screenshots or a recorded pass) attached
   to the PR, not just claimed in the description.
-- CI green before requesting merge.
+- CI green before requesting merge. The green check is the merge
+  result with the target branch, and it is a required check. See
+  [delivery.md](delivery.md#the-pipeline).
 
 ## Evidence, not claims
 

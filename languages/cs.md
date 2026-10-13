@@ -58,3 +58,11 @@ properties; `camelCase` for local variables and parameters; `_camelCase`
 for private fields. This differs from the C/C++/Python `snake_case`
 default in [style/naming.md](../style/naming.md): follow each language's
 own convention, and do not force C# into `snake_case`.
+
+## .NET Framework desktop projects
+
+A desktop project that still targets the .NET Framework is built with
+MSBuild. Tests run with `dotnet test`. The build machine has the build
+tools installed. A machine with only the runtime cannot compile the
+project. The `Directory.Build.props` settings above are for an SDK-style
+project. This section is for a desktop project still on the Framework.

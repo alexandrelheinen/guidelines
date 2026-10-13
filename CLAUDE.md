@@ -16,9 +16,11 @@ Three guidelines matter most and come first.
 
 Once work is ready to ship, the same treatment applies to
 [workflow/branching.md](workflow/branching.md),
-[workflow/commits.md](workflow/commits.md), and
-[workflow/review.md](workflow/review.md), which cover branch naming,
-commit format, and what a PR needs before a human merges it.
+[workflow/commits.md](workflow/commits.md),
+[workflow/review.md](workflow/review.md), and
+[workflow/delivery.md](workflow/delivery.md), which cover branch naming,
+commit format, what a PR needs before a human merges it, and how a
+merged change is delivered.
 
 ## 2. Writing: how any prose should read
 

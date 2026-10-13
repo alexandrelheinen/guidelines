@@ -11,7 +11,8 @@ for what changed in each release.
 - **Agent instructions**: writing and behavior guidelines for AI coding agents
   (Claude, etc.), meant to be referenced from each project's `AGENTS.md`.
 - **Development cycle guidelines**: Spec-Driven Development (SDD) and
-  Test-Driven Development (TDD) workflow standards.
+  Test-Driven Development (TDD) workflow standards, plus delivery from a
+  merged change to a running system.
 - **Language coding guidelines**: style and convention guides for Python,
   C++, C, Node.js, Rust, Ruby, and others as needed.
 - **Issue and PR templates**: aligned with the SDD + TDD workflow.
@@ -67,7 +68,9 @@ their own; `integration.md` explains how the two combine into a single
 V-cycle. `criticality.md` scales that rigor to what a failure costs and
 defines the deviation procedure for breaking a rule on purpose.
 `branching.md`, `commits.md`, and `review.md` cover how work moves from a
-branch to a merged pull request.
+branch to a merged pull request. `delivery.md` covers how a merged
+change becomes a versioned artifact and reaches a running system,
+including the pipeline and credentials.
 
 The `languages/` folder holds one file per language, named after its file
 extension rather than its full name (`py.md`, `cpp.md`, `rs.md`, and so
