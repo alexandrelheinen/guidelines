@@ -11,6 +11,12 @@ project running cc-sdd generates `requirements.md`, `design.md`, and
 `tasks.md` from its own templates instead, and the sections below become a
 checklist for what those files still have to contain.
 
+While a change is open, the issue is the working contract. This document
+is where that contract lives once it has to outlast the issue, and the
+project's README links to it. State behavior first, before endpoint or
+format details. A criterion that names a route, a field, or a payload
+before it names the behavior freezes the design into the requirement.
+
 ## Intent
 
 What problem this solves and for whom. One paragraph.
@@ -25,12 +31,22 @@ What problem this solves and for whom. One paragraph.
 
 ## Acceptance criteria
 
-Numbered and testable, EARS-style where possible. Assign a traceability id
-per criterion: pick one scheme per project (`FR-<DOMAIN>-<NN>` or
-`AC-<AREA>-<NN>`) and stay consistent:
+Numbered and testable, EARS-style where possible. Behavior first, before
+any endpoint or format. Assign a traceability id per criterion: pick one
+scheme per project (`FR-<DOMAIN>-<NN>` or `AC-<AREA>-<NN>`) and stay
+consistent:
 
 - `<ID>`: When `<trigger>`, the system shall `<behavior>`.
 - `<ID>`: When `<trigger>`, the system shall `<behavior>`.
+
+## Edge cases
+
+Boundaries the acceptance criteria cover, each one written as behavior:
+
+- Empty input, missing input, and input at the declared limits.
+- The failure a caller can cause, and what that caller observes.
+- Repeated, overlapping, or out-of-order requests, where the feature can
+  receive them.
 
 ## Traceability
 

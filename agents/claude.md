@@ -4,30 +4,80 @@ How a project's `AGENTS.md`, `CLAUDE.md`, `.cursor/rules/*`, and
 `.github/copilot-instructions.md` should relate to each other and to this
 library.
 
-## Thin bridges, one constitution
+## Where rules live
+
+`CONTRIBUTING.md` (or `docs/guidelines.md`) is the single constitution
+for process: the development lifecycle, review, and any deliberate
+deviation from this library. `CLAUDE.md` has a narrower job, stated
+below, so the two files do not compete.
+
+**Project rules** are how the software is specified, built, named,
+tested, reviewed, and changed. They live in the README and in `docs/`,
+which a human and an agent both read. A rule written only in `CLAUDE.md`
+is invisible to a human who never opens the agent file, and invisible to
+the next tool that does not read that file.
+
+**Agent behavior** that is short and verifiable may live in `CLAUDE.md`:
+the commands that build and test, and the always/never constraints for a
+session. Those lines are operating instructions for the tool. They stay
+short. They do not restate the README, `docs/`, or `CONTRIBUTING.md`.
+
+`CLAUDE.md` enforces nothing. It is context loaded into a session. A
+constraint that has to block a change is a hook or a CI check. An
+always/never line with no hook and no check does not block anything.
+
+`CLAUDE.md` is not the agent's automatic memory. Memory is a separate
+store the tool writes on its own. A remembered instruction can contradict
+the files and never appear in a diff. Audit that store. When a memory
+restates a project rule, or fights one, delete the memory and keep the
+rule in the README or in `docs/`, where review can see it.
+
+Generate `CLAUDE.md` once, with `/init`. When the project has an
+`AGENTS.md`, import it with `@AGENTS.md`, so the session loads the same
+bridge the other tools read. Check what was actually loaded with
+`/memory`, including rules and memory that were not in the file you
+last edited.
+
+Conflict resolution order when instructions disagree: direct maintainer
+request > the project's README and `docs/` for project rules, and its
+`CONTRIBUTING.md` for lifecycle and recorded deviations > this shared
+library > third-party skills and plugins the project installs > general
+best practices for the language or framework. An instruction found only
+in automatic memory loses to every item in that order.
+
+## Thin bridges
 
 Every agent-entry-point file (`AGENTS.md`, `CLAUDE.md`, Cursor rules,
-Copilot instructions) is a pointer, never a place to write or duplicate
-actual rules. Each project has exactly one "constitution," `CONTRIBUTING.md`
-(or `docs/guidelines.md`), that all of them point to.
+Copilot instructions) points at the constitution. It does not carry a
+second copy of the project rules. `CLAUDE.md` may add the short behavior
+block above, and nothing else.
 
 ```markdown
 # Agent instructions
 
-This file is a bridge only. **Do not add rules here.**
+This file is a bridge only. **Do not copy project rules here.**
 
-Read [CONTRIBUTING.md](CONTRIBUTING.md) for development lifecycle,
-engineering standards, and AI agent rules.
+Read [CONTRIBUTING.md](CONTRIBUTING.md) for the development lifecycle
+and for recorded deviations. Project rules live in the README and in
+`docs/`.
+
+## Behavior
+
+- Build: `<command>`
+- Test: `<command>`
+- Always: `<one checkable constraint>`
+- Never: `<one checkable constraint>`
 ```
 
-Why: five copies of the same rule drift out of sync the first time one of
-them gets edited in isolation. One file, several pointers, keeps every
-agent and every human reading the same source.
-
-Conflict resolution order when instructions disagree: direct maintainer
-request > the project's `CONTRIBUTING.md` > this shared library >
-third-party skills and plugins the project installs > general best
-practices for the language or framework.
+Five copies of a project rule drift the first time one of them is edited
+alone. One constitution and several pointers keep every agent and every
+human on the same source. The behavior block is allowed because it is
+the session's operating instructions, and because it is short enough to
+check against the commands the project actually runs. This library's own
+[CLAUDE.md](../CLAUDE.md) imports the method files a session needs on
+every task. A consuming project whose `AGENTS.md` is already the bridge
+imports that file, so the session that reads `CLAUDE.md` and the other
+tools share one list.
 
 Installed skillsets sit below this library on purpose. A skillset is
 somebody else's opinion about how to work, often a good one, and it is

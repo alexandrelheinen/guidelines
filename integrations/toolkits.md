@@ -48,11 +48,11 @@ last is not a standard.
 | --- | --- | --- | --- |
 | Where specs live | `docs/` | `.kiro/specs/` | The package. See [workflow/sdd.md](../workflow/sdd.md#where-specs-live) |
 | Requirement format | EARS | EARS | No conflict, both require it |
-| Whether a change may skip the spec | Spec-first is the minimum | `kiro-discovery` may route to direct implementation | This library. See [workflow/sdd.md](../workflow/sdd.md#gating-rule) |
+| Whether a change may skip the spec | The full cycle applies to architecture, usage changes, new features, and new modules. A small obvious fix skips it when the cause is known; an uncertain cause gets a short contract in the issue | `kiro-discovery` may route to direct implementation | This library. A human applies [workflow/sdd.md](../workflow/sdd.md#applicability). A skill may not waive a gate. See [the gating rule](../workflow/sdd.md#gating-rule) |
 | Who owns the spec pipeline | The project's spec documents | `kiro-*` skills, and separately the `to-spec` skill publishing to an issue tracker | cc-sdd owns it. Do not run `to-spec` in a project running cc-sdd |
 | The TDD loop | Red, green, refactor | Same loop, run per task by `kiro-impl`, plus seams from the `tdd` skill | Both. The package adds, it does not contradict. See [workflow/tdd.md](../workflow/tdd.md#seams) |
 | Reviewing a diff | Human merges, evidence scaled to blast radius | Two-axis review, standards and spec, in parallel subagents | Both. The skill is a mechanism, the merge rule is a policy. See [workflow/review.md](../workflow/review.md#running-a-review) |
-| How agent instruction files are written | Thin bridges, one constitution | Context pointers, wording decides retrieval | Both. See [agents/claude.md](../agents/claude.md#pointer-wording) |
+| How agent instruction files are written | Project rules live in the README and `docs/`. `CONTRIBUTING.md` is the process constitution. `CLAUDE.md` holds short verifiable agent behavior and enforces nothing | Context pointers, wording decides retrieval | Both. See [agents/claude.md](../agents/claude.md#where-rules-live) |
 | Design vocabulary | Naming rules only | `codebase-design` fixes module, interface, depth, seam, adapter, leverage, locality | The package, inside design discussions. It does not override [style/naming.md](../style/naming.md) for identifiers |
 | Prose voice | [agents/writing.md](../agents/writing.md) | caveman compresses to telegraphic fragments | This library, always, for anything committed. See [agents/writing.md](../agents/writing.md#compression-tools) |
 | Where the project's domain vocabulary lives | `docs/` and the spec | A `CONTEXT.md` at the repository root | Either, per project. Pick one and point the other at it, rather than maintaining both |

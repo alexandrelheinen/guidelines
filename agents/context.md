@@ -20,6 +20,19 @@ If a rule would be identical if copied into every project's
 `CONTRIBUTING.md`, it belongs here instead: write it once, link to it
 everywhere (see [claude.md](claude.md#referencing-this-library)).
 
+## Rules, the constitution, and agent behavior
+
+A project rule a human has to follow lives in the README or in `docs/`.
+`CONTRIBUTING.md` remains the constitution for the development lifecycle
+and for a deliberate deviation from this library. `CLAUDE.md` may hold
+short, verifiable agent behavior, the build and test commands and the
+session's always/never constraints, and otherwise points at those files.
+A constraint that must block a change is a hook or a CI check. Automatic
+memory is a separate store, and it gets audited so a remembered line
+cannot override the files in silence. The decision, and the setup
+(`/init` once, `@AGENTS.md` when that file exists, `/memory` to see what
+loaded), is in [claude.md](claude.md#where-rules-live).
+
 ## Project history is not documentation
 
 What happened to a project, meaning migrations, resets, abandoned

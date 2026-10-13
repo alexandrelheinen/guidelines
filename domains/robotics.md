@@ -3,9 +3,10 @@
 Practice for software that moves a machine: mobile robots, manipulators,
 and the planning and control libraries they are built from. Language
 rules live in `languages/`, the cross-language defensive rules in
-[style/defensive.md](../style/defensive.md), and the rigor levels in
-[workflow/criticality.md](../workflow/criticality.md). This file covers
-what is specific to the domain.
+[style/defensive.md](../style/defensive.md), the rigor levels in
+[workflow/criticality.md](../workflow/criticality.md), and field
+delivery in [workflow/delivery.md](../workflow/delivery.md). This file
+covers what is specific to the domain.
 
 The organizing idea comes from ISO 21448 clause 4.4.3, and it settles most
 arguments about scope: a reusable library is an **element out of
@@ -416,6 +417,14 @@ of use, inputs and their required validity, limits enforced, failure modes
 returned, and a numbered list of integration requirements. That document
 is also the spec its tests reference, which fits the traceability practice
 in [workflow/sdd.md](../workflow/sdd.md) without a parallel process.
+
+## Field delivery
+
+Putting a build onto a machine is the integrating system's act. It
+follows [workflow/delivery.md](../workflow/delivery.md). A human approves
+the artifact before field deployment. An automatic deployment is allowed
+only when the tests on that artifact justify it. The library does not
+deploy itself.
 
 ## Sources
 

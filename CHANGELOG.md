@@ -9,6 +9,21 @@ versioning follows the scheme in
 
 ### Added
 
+- `workflow/delivery.md`: continuous integration, continuous delivery, and
+  continuous deployment, chosen by the cost of a bad release. Software
+  that moves a physical machine keeps a human approval before field
+  deployment, and an automatic deployment only when the tests justify it.
+  The sequence is CI on every change, then a versioned artifact, then
+  approval, and that artifact is the shared reference between developers
+  and deployers. The loop is plan, code, build, test, release, deploy,
+  operate, monitor, with monitoring feeding the next plan. The pipeline
+  is a versioned file, changed only through pull requests, with no
+  pipeline configuration in the CI server UI. CI runs on the merge result
+  with the target branch and is a required check. Security checks
+  (leaked secrets, weak dependencies, insecure code) run in that same
+  pipeline from the first push, and unauthorized access to the repository
+  or to CI is a failed delivery. A credential is one named, revocable
+  token per machine, stored in the operating system keychain or a vault.
 - `domains/robotics.md`, and the `domains/` folder it opens, for practice
   tied to a problem domain rather than to a language. It covers which
   safety standards actually apply to a mobile robot as against a
@@ -73,6 +88,35 @@ versioning follows the scheme in
 
 ### Changed
 
+- `workflow/sdd.md` and `workflow/integration.md`: while a change is open,
+  the issue is the working contract (spec and plan), a plan that exists
+  only in a chat does not count, and at merge whatever has to last moves
+  into `docs/<feature>.md`, indexed from the README. Three human review
+  gates (spec, plan, code review) name the error each one catches. The
+  full cycle applies to architecture, usage changes, new features, and
+  new modules. A small, obvious fix skips it unless the cause is
+  uncertain, in which case a short contract in the issue is enough, and
+  refining the spec stops when further refinement would cost more than
+  fixing the misunderstanding in code. Rigor levels are redefined:
+  spec-first (criteria before code generation, and the spec may age),
+  spec-anchored (the practical default: permanent docs kept aligned with
+  the code by tests in CI), and spec-as-source (a spec change drives the
+  code change and needs strong validation).
+- `workflow/branching.md`: what happens on a push to `main` follows the
+  project's delivery policy.
+- `workflow/review.md` and `workflow/commits.md`: point at the pipeline
+  and the credential rule in `workflow/delivery.md`.
+- `agents/claude.md`: `CONTRIBUTING.md` remains the process constitution.
+  Project rules live in the README and `docs/`, for humans and agents.
+  `CLAUDE.md` holds short, verifiable agent behavior, enforces nothing,
+  and is distinct from automatic memory, which gets audited. Generate it
+  once with `/init`, import `@AGENTS.md` when that file exists, and check
+  what loaded with `/memory`. `agents/context.md` records the same split.
+- `languages/cs.md`: a .NET Framework desktop project is built with
+  MSBuild, tested with `dotnet test`, on a build machine that has the
+  build tools installed.
+- `templates/spec.md` and `templates/issue/feature.md`: an edge-cases
+  section, and behavior stated before endpoint or format details.
 - `agents/writing.md` now requires prose that asks a reader to believe or
   do something to be an argument: one claim a skeptical reader could
   reject, the grounds, and the warrant that connects them, with the point

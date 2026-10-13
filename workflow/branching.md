@@ -30,6 +30,6 @@ linear (see [review.md § Merge policy](review.md#merge-policy)).
 
 ## Protected branches
 
-`main` is protected and typically deploys automatically on push (via
-whatever CI/CD is configured for the project). No force-push to `main`,
-ever, by anyone: including agents.
+`main` is protected. What happens on push depends on the project's
+delivery policy. See [delivery.md](delivery.md). No force-push to
+`main`, ever, by anyone, including agents.

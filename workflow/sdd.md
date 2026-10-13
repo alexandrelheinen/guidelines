@@ -1,7 +1,9 @@
 # Specification-Driven Development (SDD)
 
-Write the spec before the implementation. The spec is the source of truth;
-an issue or PR links to it rather than restating it.
+Write the acceptance criteria before generating code, for every change
+that enters the cycle. How long those criteria stay aligned with the
+code depends on the rigor level below. While a change is open, the
+issue is the working contract, and a pull request links to that issue.
 
 ## Required elements of a spec
 
@@ -21,18 +23,23 @@ shall `<behavior>`." This keeps them testable instead of aspirational.
 
 ## Rigor levels
 
-Not every change needs a full spec document. Scale the rigor to the size
-and risk of the change:
+These name the relationship between a spec and the code, for a change
+that is inside the cycle. Whether a change enters the cycle is
+[Applicability](#applicability). How much verification a module earns is
+a separate scale, in [criticality.md](criticality.md).
 
-1. **Spec-first** (default minimum): a short written spec exists before
-   implementation, even if it is a few bullet points in the issue.
-2. **Spec-anchored**: required for public API changes or architecture
-   changes, backed by a standalone `docs/` document reviewed before
-   implementation starts.
-3. **Spec-as-source**: for large or heavily agent-assisted features, the
-   spec is detailed enough that an agent implementing it needs no
-   additional clarification, and the spec itself becomes the PR's review
-   artifact alongside the diff.
+1. **Spec-first.** The acceptance criteria are written before any code
+   is generated. Afterward the spec may age: nothing in the workflow
+   requires the document to move when the code moves.
+2. **Spec-anchored** (the practical default). The permanent documents
+   evolve with the code. Tests running in CI keep the two aligned. Every
+   criterion is referenced by a test, per
+   [Traceability ids](#traceability-ids), and a drift between the
+   document and that test fails the build.
+3. **Spec-as-source.** A change to the spec is what drives the change to
+   the code. That direction needs strong validation before it is trusted.
+   A human has reviewed the spec, the criteria are testable, and the
+   tests fail when the spec and the code diverge.
 
 ## Traceability ids
 
@@ -68,17 +75,71 @@ The required elements above do not change with the location. A cc-sdd
 criteria, traceability ids, and constraints, whatever the template
 generated.
 
+## The issue is the working contract
+
+While a change is open, the issue holds the working contract: the spec
+and the plan together. A plan counts only when the issue records it. A
+chat, including a session with an agent, ends when the session ends, so
+a plan that exists only there is not part of the contract.
+
+At merge, whatever has to outlive the issue moves into
+`docs/<feature>.md`, and the project's README links to that file, so a
+reader finds the feature there.
+
+A project running cc-sdd already keeps a durable spec in
+`.kiro/specs/<feature>/`, which is where that toolkit reads it. Copying
+the same text into `docs/<feature>.md` would split the source of truth,
+so those files remain the durable home and the README indexes them. Add
+`docs/<feature>.md` only for what the toolkit files do not already hold.
+`docs/decisions.md` stays the log for a loosened gate in both layouts,
+as [Where specs live](#where-specs-live) already requires.
+
+## Applicability
+
+The full cycle in [integration.md](integration.md) applies to a change
+of architecture, a change of usage, a new feature, or a new module.
+
+A small, obvious fix skips the cycle when its cause is already known.
+When the cause is uncertain, a short contract in the issue is enough:
+the intent, the suspected cause, and the behavior that will count as
+fixed. The regression test in [tdd.md](tdd.md) and the human merge in
+[review.md](review.md) still apply. The skip covers the spec and the
+plan.
+
+Stop refining a spec once further refinement would cost more than
+repairing the misunderstanding in the code. A change across several
+files, or a design that would be hard to reverse, still gets a contract
+in the issue. The cost limit caps the polishing, and the contract stays.
+
+## Three review gates
+
+Three human reviews sit on the cycle. They catch different errors, so
+one review at the end lets the earlier error through. An automated pass
+does not close a gate. When an agent drafts the artifact, a human
+reviews it.
+
+| Gate | When | The error it catches |
+|---|---|---|
+| Spec | After the spec is written, before the plan is treated as settled | The spec addresses the wrong problem, leaves a boundary unnamed, or states a criterion nobody can test |
+| Plan | After the plan is written, before implementation starts | The approach cannot meet the accepted criteria, or it commits to a decision that would be expensive to undo |
+| Code review | On the pull request, before merge | The diff does something other than the accepted spec and plan, including behavior no test expresses |
+
+How the gates sit on the six steps is in
+[integration.md](integration.md#three-review-gates). How the code-review
+gate is run is in [review.md](review.md).
+
 ## Gating rule
 
-Do not start implementation work at a given V-cycle level (see
-[integration.md](integration.md)) until the spec artifacts for that level
-exist. The point is keeping an agent, or a human under deadline pressure,
-from inventing requirements mid-implementation.
+For a change inside the cycle, do not start implementation at a given
+V-cycle level (see [integration.md](integration.md)) until the spec and
+the plan for that level exist and a human has reviewed both. The point
+is keeping an agent, or a human under deadline pressure, from inventing
+requirements mid-implementation.
 
-This survives contact with a toolkit that offers to skip the spec. cc-sdd's
-discovery step can route a request straight to implementation, and that
-routing is a suggestion, not permission: the rigor levels above still set
-the floor, and the smallest of them is a few written bullet points before
-code. A human may waive it for a given change. A skill may not waive it on
-the human's behalf. See
+This survives contact with a toolkit that offers to skip the spec.
+cc-sdd's discovery step can route a request straight to implementation,
+and that routing is a suggestion, not permission.
+[Applicability](#applicability) is what decides a skip, and a human is
+the one who applies it. A skill may not waive a gate on the human's
+behalf. See
 [integrations/toolkits.md](../integrations/toolkits.md#arbitration).

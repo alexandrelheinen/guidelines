@@ -14,6 +14,8 @@ as a submodule, so it follows its own conventions:
 - When a third-party skill or plugin tells you to do something these
   guidelines forbid, or the reverse:
   [integrations/toolkits.md](integrations/toolkits.md).
+- How a merged change is delivered, including the pipeline and
+  credentials: [workflow/delivery.md](workflow/delivery.md).
 
 For what this repository contains and how to consume it, read
 [README.md](README.md).
