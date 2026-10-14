@@ -199,6 +199,11 @@ obtain velocity is broken by specification.** Name the frame each pose
 argument is expected in, encode it in the type where the language allows,
 and document which computations tolerate a jump.
 
+A rigid transform is named destination first and source last, in
+`snake_case`, and a point's name includes the frame it is expressed in.
+In `base_from_cam` the base frame is the destination and the camera
+frame is the source, so `point_in_base = base_from_cam @ point_in_cam`.
+
 Every input sample carries its own timestamp, and every step takes the
 elapsed interval as an argument. On a middleware whose executor processes
 callbacks in a round-robin over a cached ready set rather than in arrival
