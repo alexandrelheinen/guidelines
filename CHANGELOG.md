@@ -88,6 +88,9 @@ versioning follows the scheme in
 
 ### Changed
 
+- `style/naming.md`: a unit suffix kept on a config key or in a comment
+  is a single short token (`_ms`, `_deg`, `_mm`). A spelled-out unit
+  (`_degrees`, `_meters`) falls outside that exception.
 - `workflow/sdd.md` and `workflow/integration.md`: while a change is open,
   the issue is the working contract (spec and plan), a plan that exists
   only in a chat does not count, and at merge whatever has to last moves

@@ -17,6 +17,8 @@ Applies to any variable that represents a physical quantity or measurement.
 - Exception: config file keys (YAML/JSON) and inline comments may keep a
   unit suffix for human readability, since they are read standalone rather
   than inside an expression (`timeout_ms: 500  # milliseconds` is fine).
+  When a suffix is kept, it is a single short suffix (`_ms`, `_deg`,
+  `_mm`), not a spelled-out unit (`_degrees`, `_meters`).
 
 ## Language
 
