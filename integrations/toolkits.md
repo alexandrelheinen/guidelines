@@ -18,7 +18,7 @@ because another project did.
 
 | Approach | Fit | Avoid when |
 | --- | --- | --- |
-| Hand `docs/` SDD | Default for every project. Fits brownfield work and repos that already document in `docs/` | — |
+| Hand `docs/` SDD | Default for every project. Fits brownfield work and repos that already document in `docs/` | (none) |
 | [OpenSpec](https://github.com/Fission-AI/OpenSpec) | A steady stream of changes that benefit from deltas plus an archive of decided specs | The project wants stage-gated Kiro-style ceremony |
 | [cc-sdd](https://github.com/gotalab/cc-sdd) | The project wants Kiro-shaped artifacts and `kiro-impl` outside the Kiro IDE | Small projects, Cursor-first apps, cost-sensitive work, or brownfield repos that already live in `docs/` |
 | [Spec Kit](https://github.com/github/spec-kit) | Greenfield work or constitution-heavy features that benefit from a formal kit layout | Small SPA fixes and other low-ceremony changes |
