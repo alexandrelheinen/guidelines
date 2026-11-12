@@ -16,6 +16,12 @@ as a submodule, so it follows its own conventions:
   [integrations/toolkits.md](integrations/toolkits.md).
 - How a merged change is delivered, including the pipeline and
   credentials: [workflow/delivery.md](workflow/delivery.md).
+- How commits are shaped, including that agents must land **atomic,
+  reviewable commit series** rather than omnibus dumps:
+  [workflow/commits.md](workflow/commits.md#atomic-reviewable-commits).
 
 For what this repository contains and how to consume it, read
 [README.md](README.md).
+
+When changing this repository itself, split the work into modular
+commits a human can review one concern at a time.
