@@ -31,9 +31,9 @@ at a boundary nobody agreed to is usually a test of an implementation
 detail wearing a better name.
 
 This vocabulary comes from the `tdd` and `codebase-design` skills in the
-mattpocock skillset, which the family adopted because it adds a step this
-file was missing rather than contradicting the loop above. See
-[integrations/toolkits.md](../integrations/toolkits.md).
+mattpocock skillset, which a pilot project uses because those skills add
+a step this file was missing rather than contradicting the loop above.
+See [integrations/toolkits.md](../integrations/toolkits.md).
 
 ## Coverage
 
