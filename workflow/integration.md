@@ -66,10 +66,12 @@ recorded from the spec side in [sdd.md](sdd.md#three-review-gates).
 
 ## When a toolkit drives the cycle
 
-cc-sdd runs the same V under different names, and a project using it should
-recognize the mapping rather than run two processes side by side:
+Most projects run this V against hand-written specs under `docs/`, without
+a third-party SDD suite. When a project has adopted cc-sdd, that toolkit
+runs the same V under different names, and the project should recognize
+the mapping rather than run two processes side by side:
 
-| V-cycle step | cc-sdd phase |
+| V-cycle step | cc-sdd phase (only if adopted) |
 |---|---|
 | 1, document | `kiro-discovery`, then `kiro-spec-requirements` |
 | 2, architecture | `kiro-spec-design`, then `kiro-spec-tasks` |
@@ -82,7 +84,9 @@ Steps 4 and 6 are the ones a toolkit does not get to redefine. A phase
 gate inside a skill is an agent agreeing with itself; the validation script
 and the human merge are what make it real. The spec, plan, and
 code-review gates above stay human decisions, whichever phase name the
-toolkit uses.
+toolkit uses. Spec pipeline ownership follows the project's chosen layout:
+`docs/` by default, `.kiro/` only when cc-sdd is adopted. See
+[integrations/toolkits.md](../integrations/toolkits.md#arbitration).
 
 ## Why this order, specifically
 

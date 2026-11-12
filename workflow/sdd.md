@@ -56,14 +56,17 @@ greppable in both directions.
 
 ## Where specs live
 
-A project running the cc-sdd toolkit keeps its specs where cc-sdd reads
-them, `.kiro/specs/<feature>/`, holding `requirements.md`, `design.md`, and
-`tasks.md` per feature. The toolkit owns that lifecycle, so fighting it
-buys nothing.
+The default is `docs/`: `docs/specification.md` for the project-level
+functional spec, `docs/architecture.md` for structural decisions, and
+`docs/<feature>.md` per feature. No project needs `.kiro/` unless it has
+adopted cc-sdd. How to choose among SDD toolkits is in
+[integrations/toolkits.md](../integrations/toolkits.md#choosing-an-sdd-approach).
 
-Every other project uses `docs/`: `docs/specification.md` for the
-project-level functional spec, `docs/architecture.md` for structural
-decisions, and `docs/<feature>.md` per feature.
+If a project has adopted cc-sdd, that toolkit reads specs under
+`.kiro/specs/<feature>/`, holding `requirements.md`, `design.md`, and
+`tasks.md` per feature. In that project the toolkit owns the `.kiro/`
+lifecycle, so fighting it buys nothing. Everywhere else, leave `.kiro/`
+out of the layout.
 
 Either way `docs/decisions.md` holds the ADR-style log recording why a
 constraint or gate was loosened or changed, so "why is this weaker than the
@@ -71,9 +74,9 @@ spec says" is always answerable. That file stays in `docs/` in both layouts,
 because it outlives any one spec.
 
 The required elements above do not change with the location. A cc-sdd
-`requirements.md` still has to carry intent, scope, testable acceptance
-criteria, traceability ids, and constraints, whatever the template
-generated.
+`requirements.md`, when that toolkit is in use, still has to carry intent,
+scope, testable acceptance criteria, traceability ids, and constraints,
+whatever the template generated.
 
 ## The issue is the working contract
 
@@ -86,7 +89,7 @@ At merge, whatever has to outlive the issue moves into
 `docs/<feature>.md`, and the project's README links to that file, so a
 reader finds the feature there.
 
-A project running cc-sdd already keeps a durable spec in
+A project that adopted cc-sdd already keeps a durable spec in
 `.kiro/specs/<feature>/`, which is where that toolkit reads it. Copying
 the same text into `docs/<feature>.md` would split the source of truth,
 so those files remain the durable home and the README indexes them. Add
@@ -137,8 +140,8 @@ is keeping an agent, or a human under deadline pressure, from inventing
 requirements mid-implementation.
 
 This survives contact with a toolkit that offers to skip the spec.
-cc-sdd's discovery step can route a request straight to implementation,
-and that routing is a suggestion, not permission.
+When cc-sdd is adopted, its discovery step can route a request straight
+to implementation, and that routing is a suggestion, not permission.
 [Applicability](#applicability) is what decides a skip, and a human is
 the one who applies it. A skill may not waive a gate on the human's
 behalf. See
