@@ -9,6 +9,16 @@ versioning follows the scheme in
 
 ### Added
 
+- `agents/skills.md`: three layers of agent guidance (standards in this
+  library and project docs, stack skills that consume those standards,
+  project workflow commands), preference for version-synced official
+  library skills with in-repo pins, and a ban on converting this library
+  into asserting skills. `agents/claude.md`, `agents/context.md`,
+  `AGENTS.md`, `CLAUDE.md`, and the README point at it. Projects may keep
+  an optional normative `docs/development-workflow.md`.
+- `integrations/toolkits.md`: an SDD selection matrix (hand `docs/`,
+  OpenSpec, cc-sdd, Spec Kit) with fit criteria, plus a row for official
+  library skills.
 - `workflow/delivery.md`: continuous integration, continuous delivery, and
   continuous deployment, chosen by the cost of a bad release. Software
   that moves a physical machine keeps a human approval before field
@@ -88,6 +98,20 @@ versioning follows the scheme in
 
 ### Changed
 
+- `integrations/toolkits.md`: cc-sdd remains a `clave` pilot and is not
+  the family default, especially not for brownfield or Cursor-first apps.
+  Spec pipeline ownership follows the project's chosen layout (`docs/` by
+  default; `.kiro/` only when cc-sdd is adopted). OpenSpec and Spec Kit
+  stay options without a family-wide promotion. mattpocock-skills stays
+  `clave`-only.
+- `workflow/sdd.md`, `workflow/integration.md`, `workflow/tdd.md`, and
+  `templates/spec.md`: hand-written `docs/` is the default spec home;
+  `.kiro/` and cc-sdd phase mapping apply only when that toolkit is
+  adopted.
+- `languages/js.md`: React noted at a high level; Next-only guidance must
+  not override a non-Next bundler choice.
+- `languages/py.md`: web APIs point at the official FastAPI skill via
+  library-skills rather than a parallel guide here.
 - `style/naming.md`: a unit suffix kept on a config key or in a comment
   is a single short token (`_ms`, `_deg`, `_mm`). A spelled-out unit
   (`_degrees`, `_meters`) falls outside that exception.
