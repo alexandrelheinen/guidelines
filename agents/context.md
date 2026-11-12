@@ -12,9 +12,10 @@ demand instead.
 |---|---|
 | Project-specific setup (how to run the dev server, non-obvious environment quirks) | Naming, comments, and error-handling conventions that apply everywhere |
 | The project's own spec documents (`docs/specification.md`, feature specs) | The SDD/TDD process itself |
+| An optional normative `docs/development-workflow.md` that records how *this* project runs SDD, which toolkit it chose, and which commands agents should use | The shared SDD/TDD rules and the toolkit selection matrix in [integrations/toolkits.md](../integrations/toolkits.md) |
 | Domain-specific rules (e.g. an editorial voice for one specific site) | The prose rules (clarity, argument, and the bans on generated-sounding prose) that a project's own voice builds on |
 | One-off gotchas discovered while working in this codebase | Conventions stable enough to apply across projects |
-| Which third-party toolkits the project installs, and their pins | Which of this library's rules those toolkits override, in [integrations/toolkits.md](../integrations/toolkits.md) |
+| Which third-party toolkits and stack skills the project installs, their pins, and local arbitration notes | Which of this library's rules those toolkits override, in [integrations/toolkits.md](../integrations/toolkits.md); how the three skill layers fit, in [skills.md](skills.md) |
 
 If a rule would be identical if copied into every project's
 `CONTRIBUTING.md`, it belongs here instead: write it once, link to it

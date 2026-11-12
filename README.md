@@ -54,7 +54,9 @@ used in emails, comments, and posts. `article.md` adds structure rules
 specific to long-form published content, building on `writing.md` rather
 than repeating it. `claude.md` documents how a project should structure
 its own agent-instruction files, plus the no-fabricated-evidence rule and
-evidence-reporting tiers. `context.md` explains what belongs in this
+evidence-reporting tiers. `skills.md` covers the three layers of agent
+guidance (standards, stack skills, workflow commands) and in-repo pins
+for official library skills. `context.md` explains what belongs in this
 shared library versus a single project's own files.
 
 The `style/` folder holds cross-language conventions that belong to no

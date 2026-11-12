@@ -14,6 +14,8 @@ as a submodule, so it follows its own conventions:
 - When a third-party skill or plugin tells you to do something these
   guidelines forbid, or the reverse:
   [integrations/toolkits.md](integrations/toolkits.md).
+- How standards, stack skills, and workflow commands layer, and how to
+  pin official skills in-repo: [agents/skills.md](agents/skills.md).
 - How a merged change is delivered, including the pipeline and
   credentials: [workflow/delivery.md](workflow/delivery.md).
 - How commits are shaped, including that agents must land **atomic,

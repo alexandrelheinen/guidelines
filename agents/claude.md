@@ -148,6 +148,12 @@ rather than restating it. Read the pin from what the installer wrote, not
 from the tag you meant to install, and check whether the package registers
 session hooks before describing it as inactive.
 
+Skills sit in three layers: standards in this library and project docs,
+stack skills that consume those standards, and project workflow commands.
+Prefer version-synced official library skills, keep pins in the repo, and
+do not turn this library into asserting skills. The full split is in
+[skills.md](skills.md).
+
 ## No fabricated evidence
 
 Do not present fabricated, staged, or edited output as real. This applies
