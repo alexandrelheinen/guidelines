@@ -10,8 +10,17 @@ tooling for a static site.
   a monorepo, re-exported by each workspace rather than duplicated.
 - Prettier: `semi: true`, `singleQuote: true`, `trailingComma: "all"`,
   `printWidth: 100`, `tabWidth: 2`.
+- React is the usual UI library for app-style work in this family. Keep
+  guidance at that level here: hooks, components, and the React ESLint
+  plugins below. Framework-specific advice (Next.js routing, App Router,
+  or a Next-only bundler setup) belongs in the project or in an official
+  stack skill, and must not override a non-Next project's chosen bundler
+  (CRA, Vite, Parcel, or none).
 - `eslint-plugin-react` + `eslint-plugin-react-hooks` recommended rules
   where React is in use.
+- Prefer a version-synced official React or framework skill, pinned
+  in-repo, over inventing parallel UI guidance here. See
+  [agents/skills.md](../agents/skills.md).
 - CI runs lint with zero tolerance: `--max-warnings 0`.
 - Workspace-internal imports use a consistent scope prefix
   (`@scope/package-name`), never relative paths that reach across package

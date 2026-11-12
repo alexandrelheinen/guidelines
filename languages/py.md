@@ -75,6 +75,15 @@ Build a small domain-specific exception hierarchy rooted at one base
 exception per package, rather than raising bare `Exception`/`ValueError`
 everywhere. See [style/errors.md](../style/errors.md#exceptions-vs-result-types-application-code).
 
+## Web APIs
+
+When a project uses FastAPI, install the official FastAPI agent skill for
+the pinned package version (for example `uvx library-skills`) rather than
+adding a parallel FastAPI guide to this library. Keep family law in this
+file; let the skill cover framework idioms. See
+[agents/skills.md](../agents/skills.md) and
+[integrations/toolkits.md](../integrations/toolkits.md).
+
 ## Critical systems
 
 Applies to a module at criticality C1 or C2 in
