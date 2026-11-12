@@ -65,6 +65,8 @@ them for the task at hand rather than needing them every time:
 - [agents/claude.md](agents/claude.md), how this library expects a
   consuming project to structure its own agent-instruction files, plus the
   no-fabricated-evidence rule and evidence-reporting tiers.
+- [agents/skills.md](agents/skills.md), the three layers of agent guidance
+  (standards, stack skills, workflow commands) and in-repo skill pins.
 - [agents/context.md](agents/context.md), what belongs in this shared
   library versus in a single project's own `CONTRIBUTING.md`.
 - [integrations/toolkits.md](integrations/toolkits.md), read this whenever

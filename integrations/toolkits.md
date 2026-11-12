@@ -66,7 +66,9 @@ and still lose, because a standard that bends to whatever was installed
 last is not a standard.
 
 This library itself stays standards and process prose. Do not convert it
-into a tree of asserting skills.
+into a tree of asserting skills. How the three layers (standards, stack
+skills, workflow commands) fit together is in
+[agents/skills.md](../agents/skills.md).
 
 ## Arbitration
 
