@@ -50,11 +50,11 @@ not a silent threshold edit.
 
 ## Running the loop per task
 
-A toolkit may drive the loop for you. cc-sdd's implementation phase runs
-one task per iteration with a fresh implementer, an independent reviewer,
-and a debugging pass when the reviewer rejects twice, which is the same
-red-green-refactor cycle with the roles separated so that the author of a
-test is not also its judge.
+A toolkit may drive the loop for you. When cc-sdd is adopted, its
+implementation phase runs one task per iteration with a fresh
+implementer, an independent reviewer, and a debugging pass when the
+reviewer rejects twice, which is the same red-green-refactor cycle with
+the roles separated so that the author of a test is not also its judge.
 
 Two rules hold whoever is driving. The failing test comes first and fails
 for the right reason, and a task is not done because an agent said so, but
